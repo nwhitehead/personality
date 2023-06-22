@@ -1,0 +1,17 @@
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    {% if ansible_connection != 'local' %}
+    server_name chatprompt.pro www.chatprompt.pro;
+    {% endif %}
+
+    root /var/www/chatpromptpro;
+
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}

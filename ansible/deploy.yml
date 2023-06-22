@@ -1,0 +1,6 @@
+- hosts: "{{ variable_host | default('server') }}"
+  tasks:
+    - name: Synchronize site files
+      synchronize:
+        src: ../dist/
+        dest: /var/www/chatpromptpro/

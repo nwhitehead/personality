@@ -1,0 +1,4 @@
+backend/target
+.env
+node_modules/
+dist/

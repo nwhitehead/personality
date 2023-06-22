@@ -1,0 +1,32 @@
+- hosts: "{{ variable_host | default('server') }}"
+  vars:
+    ansible_ssh_pipelining: true
+  tasks:
+    - name: Ensure Nginx is at the latest version
+      apt: name=nginx state=latest
+    - name: Allow Nginx through ufw firewall
+      ufw:
+        rule: allow
+        name: Nginx Full
+        state: enabled
+    - name: Setup Nginx appserver site
+      template:
+        src: ../site.conf.j2
+        dest: /etc/nginx/sites-available/chatgptpro
+      notify: Restart Nginx
+    - name: Enable Nginx site
+      file:
+        src: /etc/nginx/sites-available/chatgptpro
+        dest: /etc/nginx/sites-enabled/chatgptpro
+        state: link
+      notify: Restart Nginx
+    - name: Start Nginx
+      service:
+          name: nginx
+          state: started
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
