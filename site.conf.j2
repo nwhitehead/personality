@@ -4,10 +4,10 @@ server {
     listen [::]:80;
 
     {% if ansible_connection != 'local' %}
-    server_name chatprompt.pro www.chatprompt.pro;
+    server_name www.shimmerai.pro shimmerai.pro;
     {% endif %}
 
-    root /var/www/chatpromptpro;
+    root /var/www/shimmerai;
 
     index index.html;
 

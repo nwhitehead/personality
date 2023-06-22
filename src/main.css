@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/stackoverflow-dark.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-100;
+    @apply font-special;
+}
+.btn {
+    @apply font-bold py-2 px-4 rounded relative shadow;
+}
+.btn-blue {
+    @apply btn bg-blue-500 text-white;
+}
+.btn-blue:hover {
+    @apply bg-blue-700;
+}
+.btn-green {
+    @apply btn bg-green-500 text-white;
+}
+.btn-green:hover {
+    @apply bg-green-700;
+}
+.btn-red {
+    @apply btn bg-red-500 text-white;
+}
+.btn-red:hover {
+    @apply bg-red-700;
+}
+.btn-yellow {
+    @apply btn bg-yellow-500 text-white;
+}
+.btn-yellow:hover {
+    @apply bg-yellow-700;
+}
+.btn-indigo {
+    @apply btn bg-indigo-500 text-white;
+}
+.btn-indigo:hover {
+    @apply bg-indigo-700;
+}
+.checkmark {
+    @apply rounded py-2 px-2 ml-4 bg-gray-200 hover:bg-gray-300;
+}
+span.note {
+    @apply font-bold;
+}
+.btn-tag {
+    @apply absolute text-[0.5em] text-white top-0 right-0 h-4 w-4;
+}
+.legal-link {
+    @apply transition hover:opacity-75;
+}
+.link {
+    @apply transition hover:opacity-75 text-blue-700;
+}
+.expander {
+    @apply py-0 my-0 px-4 rounded relative shadow;
+}
+
+ol {
+    @apply list-decimal;
+    @apply list-outside;
+    @apply pb-4 pl-4;
+}
+ul {
+    @apply list-disc;
+    @apply list-inside;
+    @apply pb-4;
+}
+p {
+    @apply pb-4;
+    @apply break-words;
+    @apply whitespace-pre-wrap;
+}
+table {
+    @apply mb-4 text-sm;
+}
+.markdown th {
+    @apply bg-stone-200 border py-1 px-3;
+}
+.markdown td {
+    @apply border py-1 px-3;
+}
+code:not(.hljs) {
+    font-weight: 700;
+}
+code:not(.hljs)::before {
+    font-weight: 700;
+    content: '`';
+}
+code:not(.hljs)::after {
+    font-weight: 700;
+    content: '`';
+}
+pre code.hljs {
+}
+pre code::before {
+    content: '' !important;
+}
+pre code::after {
+    content: '' !important;
+}
+pre {
+    @apply mb-4;
+}
+.hljs {
+    @apply bg-black rounded-b-md p-0;
+}
+footer ul {
+    @apply list-none;
+}
+
+.bg-grid {
+    background-color: #333;
+    background-size: 24px 24px;
+    background-image:
+      linear-gradient(to right, #444 1px, transparent 1px),
+      linear-gradient(to bottom, #444 1px, transparent 1px);
+}

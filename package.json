@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "concurrently 'vite' 'nodemon server/server.js'",
+    "_comment": "dev: concurrently 'vite' 'nodemon server/server.js'",
+    "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview"
   },
