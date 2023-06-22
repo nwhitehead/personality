@@ -11,7 +11,7 @@ import { computed, reactive, ref, onMounted, watch } from 'vue';
                 <div class="bg-blue-500 w-[5px] h-[2em]">
                 </div>
                 <router-link to="/" class="sm:text-2xl font-bold flex flex-row px-4">
-                    ShimmerAI PRO
+                    ShimmerAI
                 </router-link>
                 <div class="grow" />
                 <router-link to="/team" class="px-4">Team</router-link>
@@ -70,7 +70,7 @@ import { computed, reactive, ref, onMounted, watch } from 'vue';
                 </nav>
             </div>
             <div class="flex flex-row">
-                <p class="pr-2">Made with</p><div class="grayscale hover:grayscale-0 hover:animate-wiggle hover:cursor-default">💖</div>
+                <p class="pr-2">Made with</p><div class="grayscale hover:grayscale-0 hover:animate-wiggle hover:cursor-default">💖+🧠+☕</div>
             </div>
         </div>
     </div>
