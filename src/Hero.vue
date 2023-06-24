@@ -6,15 +6,18 @@
 .pic {
     @apply w-full;
 }
+figure {
+    text-align: center;
+}
 </style>
 <template>
 
 <section>
     <div class="container mx-auto max-w-screen-xl flex flex-col items-center justify-center px-16">
 
-        <div class="text-4xl md:text-5xl font-display font-semibold text-blue-950">
+        <div class="text-4xl md:text-5xl font-display font-semibold text-orange-950">
             <p class="text-center leading-relaxed">
-                <span class="text-pink-700">Create personalities</span> that can talk and play
+                <span class="text-orange-700 drop-shadow-lg">Create personalities</span> that can talk and play
             </p>
             <p class="text-center leading-relaxed text-3xl">
                 Easy conversational and emotion technology at your fingertips
@@ -26,21 +29,21 @@
 <section>
     <div class="container mx-auto max-w-screen-xl flex flex-col items-center px-16">
         <div class="flex flex-row">
-            <img src="images/emily.png" class="w-full" />
-            <img src="images/mei.png" class="w-full" />
-            <img src="images/ishani.png" class="w-full" />
-            <img src="images/harper.png" class="w-full" />
+            <img src="images/ethan.png" class="w-full" />
+            <img src="images/ashani.png" class="w-full" />
+            <img src="images/julia.png" class="w-full" />
+            <img src="images/emir.png" class="w-full" />
         </div>
         <div class="flex flex-row">
-            <img src="images/maya.png" class="w-full" />
-            <img src="images/grace.png" class="w-full" />
-            <img src="images/rina.png" class="w-full" />
-            <img src="images/emma.png" class="w-full" />
+            <img src="images/eunji.png" class="w-full" />
+            <img src="images/jaden.png" class="w-full" />
+            <img src="images/emily.png" class="w-full" />
+            <img src="images/zara.png" class="w-full" />
         </div>
 
-        <div class="flex flex-row">
+        <div class="flex flex-row my-64">
             <figure class="pic">
-                <img src="images/emily.png" class="w-full" /><figcaption>Emily</figcaption>
+                <img src="images/julia.png" class="w-full rounded-full" /><figcaption>Julia is royalty from the <em>Outer Kingdom</em>.</figcaption>
             </figure>
         </div>
     </div>
