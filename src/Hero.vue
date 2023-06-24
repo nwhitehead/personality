@@ -28,14 +28,14 @@
         <div class="flex flex-row">
             <img src="images/emily.png" class="w-full" />
             <img src="images/mei.png" class="w-full" />
+            <img src="images/ishani.png" class="w-full" />
             <img src="images/harper.png" class="w-full" />
-            <img src="images/grace.png" class="w-full" />
         </div>
         <div class="flex flex-row">
-            <img src="images/emma.png" class="w-full" />
-            <img src="images/chloe.png" class="w-full" />
             <img src="images/maya.png" class="w-full" />
+            <img src="images/grace.png" class="w-full" />
             <img src="images/rina.png" class="w-full" />
+            <img src="images/emma.png" class="w-full" />
         </div>
 
         <div class="flex flex-row">
