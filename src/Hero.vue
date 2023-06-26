@@ -78,10 +78,10 @@ figure {
 <section>
     <div class="container mx-auto max-w-screen-xl flex flex-col items-center px-16">
         <div class="flex flex-row">
-            <img :src="ethan_png" class="w-full" />
-            <img :src="ashani_png" class="w-full" />
-            <img :src="julia_png" class="w-full" />
-            <img :src="emir_png" class="w-full" />
+            <img :src="ethan_png" class="w-full min-w-0" />
+            <img :src="ashani_png" class="w-full min-w-0" />
+            <img :src="julia_png" class="w-full min-w-0" />
+            <img :src="emir_png" class="w-full min-w-0" />
         </div>
         <!-- <div class="flex flex-row">
             <img src="images/eunji.png" class="w-full" />
