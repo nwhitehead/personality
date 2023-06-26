@@ -10,4 +10,4 @@
 
     - name: Get certs
       shell: |
-        certbot --nginx --redirect -n -d chatprompt.pro -d www.chatprompt.pro -m {{ acme_email }} --agree-tos
+        certbot --nginx --redirect -n -d shimmerai.online -d www.shimmerai.online -m {{ acme_email }} --agree-tos

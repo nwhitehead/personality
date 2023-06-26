@@ -1,11 +1,15 @@
 <script setup>
 
 import { ref, onMounted, onUnmounted } from 'vue';
+import ethan_png from '../images/ethan.png';
+import ashani_png from '../images/ashani.png';
+import julia_png from '../images/julia.png';
+import emir_png from '../images/emir.png';
 
 const ashaniEmotion = ref('smile-1');
 
 function getAshaniEmotionImage() {
-    return `images/ashani/${ashaniEmotion.value}.png`;
+    return `/ashani/${ashaniEmotion.value}.png`;
 }
 
 function blink() {
@@ -29,7 +33,7 @@ function blink() {
 function randomEmotion() {
     const delay = 3000 + (Math.random() * 3000);
     setTimeout(() => {
-        const emotions = ['angry', 'disgust', 'embarrassed', 'frown-1', 'frown-2', 'frown-3', 'neutral', 'sleepy-1', 'smile-2', 'smile-3', 'smirk', 'surprised', 'surprised-2', 'thinking'];
+        const emotions = ['angry', 'disgust', 'embarrassed', 'frown-1', 'frown-2', 'frown-3', 'neutral', 'sleepy-1', 'smile-2', 'smile-3', 'smirk', 'surprised', 'surprised-2'];
         const emotion = emotions[Math.floor(Math.random() * emotions.length)];
         if (Math.random() < 0.5) {
             ashaniEmotion.value = 'smile-1';
@@ -74,10 +78,10 @@ figure {
 <section>
     <div class="container mx-auto max-w-screen-xl flex flex-col items-center px-16">
         <div class="flex flex-row">
-            <img src="images/ethan.png" class="w-full" />
-            <img src="images/ashani.png" class="w-full" />
-            <img src="images/julia.png" class="w-full" />
-            <img src="images/emir.png" class="w-full" />
+            <img :src="ethan_png" class="w-full" />
+            <img :src="ashani_png" class="w-full" />
+            <img :src="julia_png" class="w-full" />
+            <img :src="emir_png" class="w-full" />
         </div>
         <!-- <div class="flex flex-row">
             <img src="images/eunji.png" class="w-full" />
@@ -95,7 +99,7 @@ figure {
 </section>
 
 <section>
-<p>Content</p>
+<!-- Content -->
 </section>
 
 </template>

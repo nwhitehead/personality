@@ -3,4 +3,4 @@
     - name: Synchronize site files
       synchronize:
         src: ../dist/
-        dest: /var/www/chatpromptpro/
+        dest: /var/www/shimmerai/

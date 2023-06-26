@@ -12,12 +12,12 @@
     - name: Setup Nginx appserver site
       template:
         src: ../site.conf.j2
-        dest: /etc/nginx/sites-available/chatgptpro
+        dest: /etc/nginx/sites-available/shimmerai
       notify: Restart Nginx
     - name: Enable Nginx site
       file:
-        src: /etc/nginx/sites-available/chatgptpro
-        dest: /etc/nginx/sites-enabled/chatgptpro
+        src: /etc/nginx/sites-available/shimmerai
+        dest: /etc/nginx/sites-enabled/shimmerai
         state: link
       notify: Restart Nginx
     - name: Start Nginx
