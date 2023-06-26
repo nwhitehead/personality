@@ -1,5 +1,50 @@
 <script setup>
 
+import { ref, onMounted, onUnmounted } from 'vue';
+
+const ashaniEmotion = ref('smile-1');
+
+function getAshaniEmotionImage() {
+    return `images/ashani/${ashaniEmotion.value}.png`;
+}
+
+function blink() {
+    // Constants and amount of delay are purely based on what "seems" good
+    const delay = 5000 + (Math.random() * 3000 - 1500);
+    setTimeout(() => {
+        // Check if we are in smile-1 state, if so blink, otherwise wait again
+        if (ashaniEmotion.value === 'smile-1') {
+            ashaniEmotion.value = 'smile-1-blink';
+            const delay = 150 + (Math.random() * 50 - 25);
+            setTimeout(() => {
+                ashaniEmotion.value = 'smile-1';
+                blink();
+            }, delay);
+        } else {
+            blink();
+        }
+    }, delay);
+}
+
+function randomEmotion() {
+    const delay = 3000 + (Math.random() * 3000);
+    setTimeout(() => {
+        const emotions = ['angry', 'disgust', 'embarrassed', 'frown-1', 'frown-2', 'frown-3', 'neutral', 'sleepy-1', 'smile-2', 'smile-3', 'smirk', 'surprised', 'surprised-2', 'thinking'];
+        const emotion = emotions[Math.floor(Math.random() * emotions.length)];
+        if (Math.random() < 0.5) {
+            ashaniEmotion.value = 'smile-1';
+        } else {
+            ashaniEmotion.value = emotion;
+        }
+        randomEmotion();
+    }, delay);
+}
+
+onMounted(() => {
+    blink();
+    randomEmotion();
+});
+
 </script>
 
 <style>
@@ -34,16 +79,16 @@ figure {
             <img src="images/julia.png" class="w-full" />
             <img src="images/emir.png" class="w-full" />
         </div>
-        <div class="flex flex-row">
+        <!-- <div class="flex flex-row">
             <img src="images/eunji.png" class="w-full" />
             <img src="images/jaden.png" class="w-full" />
             <img src="images/emily.png" class="w-full" />
             <img src="images/zara.png" class="w-full" />
-        </div>
+        </div> -->
 
         <div class="flex flex-row my-64">
             <figure class="pic">
-                <img src="images/julia.png" class="w-full rounded-full" /><figcaption>Julia is royalty from the <em>Outer Kingdom</em>.</figcaption>
+                <img :src="getAshaniEmotionImage()" class="w-64 rounded-full" /><figcaption>Ashani has emotions.</figcaption>
             </figure>
         </div>
     </div>
