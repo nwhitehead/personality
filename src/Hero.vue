@@ -2,6 +2,21 @@
 
 import { ref, onMounted, onUnmounted } from 'vue';
 import Likert from './Likert.vue';
+import Quiz from './Quiz.vue';
+import quiz1 from '../quiz1.txt?raw';
+
+function parseQuiz(txt) {
+    let result = [];
+    const lines = txt.split(/\r?\n/);
+    for (const line of lines) {
+        if (line !== '' && line !== '--' && line[0] !== '#') {
+            result.push(line);
+        }
+    }
+    return result;
+}
+
+const questions = parseQuiz(quiz1);
 
 const ashaniEmotion = ref('smile-1');
 
@@ -87,7 +102,7 @@ figure {
             <img src="/images/emir.png" title="Emir" class="w-full min-w-0" />
         </div>
 
-        <div class="flex flex-row my-64">
+        <div class="flex flex-row my-16">
             <figure class="pic">
                 <img :src="getAshaniEmotionImage()" class="w-64 rounded-full" /><figcaption>Ashani has emotions.</figcaption>
             </figure>
@@ -96,11 +111,9 @@ figure {
 </section>
 
 <section>
-    <div class="container mx-auto max-w-screen-xl flex flex-col items-center px-16">
-        <Likert :question="'Ashani knows how to comfort others.'" :choices="['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree']" />
-        <Likert :question="'Ashani enjoys bringing people together.'" :choices="['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree']" />
+    <div class="container mx-auto max-w-screen-md flex flex-col items-center px-16">
+        <Quiz :name="'Ashani'" :questions="questions" />
     </div>
-
 </section>
 
 </template>

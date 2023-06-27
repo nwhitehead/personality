@@ -1,0 +1,24 @@
+# Data downloaded from:
+# http://openpsychometrics.org/_rawdata/16PF.zip
+# In codebook are actual questions
+
+$name knows how to comfort others.
+$name makes insightful remarks.
+$name is relaxed most of the time
+$name wants to be in charge.
+$name jokes around a lot.
+$name tries to follow the rules.
+$name talks to a lot of different people at parties.
+$name reads a lot.
+$name is wary of others.
+
+# $name enjoys bringing people together.
+# $name feels others' emotions.
+# $name takes an interest in other people's lives.
+# $name cheers people up.
+# $name makes people feel at ease.
+# $name takes time out for others.
+# $name doesn't like to get involved in other people's problems.
+# $name is not really interested in others.
+# $name tries not to think about the needy.
+--

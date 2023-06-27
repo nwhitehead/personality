@@ -120,3 +120,8 @@ footer ul {
       linear-gradient(to right, #444 1px, transparent 1px),
       linear-gradient(to bottom, #444 1px, transparent 1px);
 }
+
+.likert-text {
+    @apply text-sm;
+    @apply text-stone-700;
+}
