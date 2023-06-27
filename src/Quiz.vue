@@ -24,5 +24,6 @@ const props = defineProps(['name', 'questions']);
             <span class="text-base">{{question}}</span>
         </Likert>
     </template>
+    <span class="float-right">→</span>
     </div>
 </template>

@@ -5,6 +5,9 @@ import Likert from './Likert.vue';
 import Quiz from './Quiz.vue';
 import quiz1 from '../quiz1.txt?raw';
 
+import { BarChart } from 'chartist';
+import 'chartist/dist/index.css';
+
 function parseQuiz(txt) {
     let result = [];
     const lines = txt.split(/\r?\n/);
@@ -61,6 +64,28 @@ onMounted(() => {
     randomEmotion();
 });
 
+onMounted(() => {
+    new BarChart('#chart',
+        {
+            labels: ['Warm', 'Smart', 'Stable', 'Assertive', 'Talkative', 'Dutiful', 'Friendly', 'Sensitive', 'Distrust', 'Imagination', 'Reserved', 'Anxious', 'Complex', 'Introvert', 'Orderly', 'Emotional'],
+            series: [[3.8689434510233935, 2.2848016877707034, 4.42701971561154, 3.6790819536953516, 1.7257258826789301, 3.130443315764404, 2.675490331896998, 2.755685967430919, 2.7427192636076674, 2.5915552619917417, 0.6548714831106989, 2.2935515680822465, 0.8830709743506621, 2.8490051872790643, 0.008619933202794194, 3.09361149503031407]],
+        }, {
+            stackBars: true,
+            reverseData: true,
+            horizontalBars: true,
+            high: 5,
+            low: 0,
+            axisY: {
+                offset: 100,
+            },
+            axisX: {
+                offset: 20,
+            },
+            showGridBackground: false,
+            height: '400px',
+        });
+});
+
 </script>
 
 <style>
@@ -113,7 +138,10 @@ figure {
 <section>
     <div class="container mx-auto max-w-screen-md flex flex-col items-center px-16">
         <Quiz :name="'Ashani'" :questions="questions" />
+        <h3>Current Personality Assessment - Ashani</h3>
+        <div id="chart" style="width: 100%; height: 100%;" />
     </div>
 </section>
+
 
 </template>
