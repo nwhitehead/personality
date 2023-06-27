@@ -2,15 +2,15 @@
 # http://openpsychometrics.org/_rawdata/16PF.zip
 # In codebook are actual questions
 
-$name knows how to comfort others.
-$name makes insightful remarks.
-$name is relaxed most of the time
-$name wants to be in charge.
-$name jokes around a lot.
-$name tries to follow the rules.
-$name talks to a lot of different people at parties.
-$name reads a lot.
-$name is wary of others.
+I know how to comfort others.
+I make insightful remarks.
+I am relaxed most of the time
+I want to be in charge.
+I joke around a lot.
+I try to follow the rules.
+I talk to a lot of different people at parties.
+I read a lot.
+I am wary of others.
 
 # $name enjoys bringing people together.
 # $name feels others' emotions.

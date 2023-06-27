@@ -17,10 +17,12 @@ const props = defineProps(['name', 'questions']);
 
 <template>
 
+    <div class="w-full">
+    <p class="text-lg">How would {{name}} answer the following questions?</p>
     <template v-for="(question, index) in questions">
         <Likert>
-            <span class="text-base">{{question.replace("$name", props.name)}}</span>
+            <span class="text-base">{{question}}</span>
         </Likert>
     </template>
-
+    </div>
 </template>
