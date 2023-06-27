@@ -1,10 +1,6 @@
 <script setup>
 
 import { ref, onMounted, onUnmounted } from 'vue';
-import ethan_png from '../images/ethan.png';
-import ashani_png from '../images/ashani.png';
-import julia_png from '../images/julia.png';
-import emir_png from '../images/emir.png';
 
 const ashaniEmotion = ref('smile-1');
 
@@ -78,17 +74,17 @@ figure {
 <section>
     <div class="container mx-auto max-w-screen-xl flex flex-col items-center px-16">
         <div class="flex flex-row">
-            <img :src="ethan_png" class="w-full min-w-0" />
-            <img :src="ashani_png" class="w-full min-w-0" />
-            <img :src="julia_png" class="w-full min-w-0" />
-            <img :src="emir_png" class="w-full min-w-0" />
+            <img src="/images/ethan.png" title="Ethan" class="w-full min-w-0" />
+            <img src="/images/zara.png" title="Zara" class="w-full min-w-0" />
+            <img src="/images/julia.png" title="Julia" class="w-full min-w-0" />
+            <img src="/images/jaden.png" title="Jaden" class="w-full min-w-0" />
         </div>
-        <!-- <div class="flex flex-row">
-            <img src="images/eunji.png" class="w-full" />
-            <img src="images/jaden.png" class="w-full" />
-            <img src="images/emily.png" class="w-full" />
-            <img src="images/zara.png" class="w-full" />
-        </div> -->
+        <div class="flex flex-row">
+            <img src="/images/eunji.png" title="Eun-ji" class="w-full min-w-0" />
+            <img src="/images/ashani.png" title="Ashani" class="w-full min-w-0" />
+            <img src="/images/ming.png" title="Ming" class="w-full min-w-0" />
+            <img src="/images/emir.png" title="Emir" class="w-full min-w-0" />
+        </div>
 
         <div class="flex flex-row my-64">
             <figure class="pic">
