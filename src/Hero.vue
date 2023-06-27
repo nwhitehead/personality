@@ -1,6 +1,7 @@
 <script setup>
 
 import { ref, onMounted, onUnmounted } from 'vue';
+import Likert from './Likert.vue';
 
 const ashaniEmotion = ref('smile-1');
 
@@ -95,7 +96,11 @@ figure {
 </section>
 
 <section>
-<!-- Content -->
+    <div class="container mx-auto max-w-screen-xl flex flex-col items-center px-16">
+        <Likert :question="'Ashani knows how to comfort others.'" :choices="['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree']" />
+        <Likert :question="'Ashani enjoys bringing people together.'" :choices="['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree']" />
+    </div>
+
 </section>
 
 </template>
