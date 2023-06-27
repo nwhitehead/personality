@@ -33,7 +33,7 @@ function blink() {
 function randomEmotion() {
     const delay = 3000 + (Math.random() * 3000);
     setTimeout(() => {
-        const emotions = ['angry', 'disgust', 'embarrassed', 'frown-1', 'frown-2', 'frown-3', 'neutral', 'sleepy-1', 'smile-2', 'smile-3', 'smirk', 'surprised', 'surprised-2'];
+        const emotions = ['angry', 'disgust', 'embarrassed', 'frown-1', 'frown-2', 'frown-3', 'neutral', 'sleepy-1', 'smile-2', 'smile-3', 'smirk', 'surprised', 'surprised-2', 'horrified'];
         const emotion = emotions[Math.floor(Math.random() * emotions.length)];
         if (Math.random() < 0.5) {
             ashaniEmotion.value = 'smile-1';
