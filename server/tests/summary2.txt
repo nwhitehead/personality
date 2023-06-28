@@ -1,4 +1,4 @@
-Summarize the most important parts of the following dialogue in one sentence.
+Summarize the most important parts of the following dialogue in one brief sentence.
 
 Ashani: Hi, how are you doing? I'm new here.
 
