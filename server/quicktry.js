@@ -55,7 +55,7 @@ async function getCompletion(prompt, system) {
             {role: "user", content: prompt},
         ],
         temperature: 0.5,
-        max_tokens: 200,
+        max_tokens: 500,
         stream: true,
     };
     const response = await openai.createChatCompletion(req, {

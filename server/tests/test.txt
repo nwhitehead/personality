@@ -1,0 +1,20 @@
+A personality test has the following factors:
+warmth
+stability
+assertive
+talkative
+dutiful
+friendly
+sensitive
+distrust
+imagination
+reserved
+anxious
+complex 
+introvert
+orderly
+emotional
+
+For each keyword respond with 3 of the factors that most closely match the keyword, then 3 of the factors that least closely match the keyword.
+
+Keywords: adaptable adventurous affectionate agreeable ambitious
