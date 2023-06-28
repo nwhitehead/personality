@@ -12,11 +12,23 @@ import 'chartist/dist/index.css';
 
 function parseQuiz(txt) {
     let result = [];
+    let question = null;
+    let choices = [];
     const lines = txt.split(/\r?\n/);
     for (const line of lines) {
-        if (line !== '' && line !== '--' && line[0] !== '#') {
-            result.push(line);
+        if (line !== '' && line !== '--' && line[0] !== '#' && line[0] !== ' ') {
+            if (question !== null) {
+                result.push({question, choices});
+            }
+            question = line;
+            choices = [];
         }
+        if (line !== '' && line[0] === ' ') {
+            choices.push(line);
+        }
+    }
+    if (question !== null) {
+        result.push({question, choices});
     }
     return result;
 }
@@ -164,6 +176,13 @@ figure {
             <div id="chart" style="width: 100%; height: 100%;" />
             <h3 class="text-lg">Current keywords - Ashani</h3>
             <KeywordCloud :keywords="keywords" />
+            <h3 class="text-lg">Current media favorites - Ashani</h3>
+            <div class="flex row">
+                <img src="images/eternalsunshine.jpg" class="w-48" />
+                <img src="images/beforeifall.jpg" class="w-48" />
+                <img src="images/benditlikebeckham.jpg" class="w-48" />
+                <img src="images/brideandprejudice.jpg" class="w-48" />
+            </div>
         </div>
     </div>
 </section>

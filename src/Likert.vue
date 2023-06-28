@@ -22,7 +22,8 @@
 import { ref } from 'vue';
 
 const props = defineProps(['choices']);
-const choices = props.choices || ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'];
+const choices = (props.choices && props.choices.length > 0) ? props.choices :
+    ['Strongly disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly agree'];
 
 let selected = ref('');
 

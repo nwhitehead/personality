@@ -1,8 +1,19 @@
 # Data downloaded from:
 # http://openpsychometrics.org/_rawdata/16PF.zip
 # In codebook are actual questions
+# Key info:
+# https://ipip.ori.org/new16PFKey.htm
 
 I know how to comfort others.
+
+Do people have an unusual or humorous nickname for you?
+    Yes, and I like it.
+    Yes, but I don't like it.
+    No
+
+In high school were you one of the cool kids?
+    Yes
+    No
 
 # I am relaxed most of the time
 # I want to be in charge.
