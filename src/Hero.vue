@@ -3,6 +3,8 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import Likert from './Likert.vue';
 import Quiz from './Quiz.vue';
+import KeywordCloud from './KeywordCloud.vue';
+
 import quiz1 from '../quiz1.txt?raw';
 
 import { BarChart } from 'chartist';
@@ -65,10 +67,10 @@ onMounted(() => {
 });
 
 onMounted(() => {
-    new BarChart('#chart',
+    new BarChart('div#chart',
         {
-            labels: ['Warm', 'Smart', 'Stable', 'Assertive', 'Talkative', 'Dutiful', 'Friendly', 'Sensitive', 'Distrust', 'Imagination', 'Reserved', 'Anxious', 'Complex', 'Introvert', 'Orderly', 'Emotional'],
-            series: [[3.8689434510233935, 2.2848016877707034, 4.42701971561154, 3.6790819536953516, 1.7257258826789301, 3.130443315764404, 2.675490331896998, 2.755685967430919, 2.7427192636076674, 2.5915552619917417, 0.6548714831106989, 2.2935515680822465, 0.8830709743506621, 2.8490051872790643, 0.008619933202794194, 3.09361149503031407]],
+            labels: ['Warm', 'Stable', 'Assertive', 'Talkative', 'Dutiful', 'Friendly', 'Sensitive', 'Distrust', 'Imagination', 'Reserved', 'Anxious', 'Complex', 'Introvert', 'Orderly', 'Emotional'],
+            series: [[3.8689434510233935, 4.42701971561154, 3.6790819536953516, 1.7257258826789301, 3.130443315764404, 2.675490331896998, 2.755685967430919, 2.7427192636076674, 2.5915552619917417, 0.6548714831106989, 2.2935515680822465, 0.8830709743506621, 2.8490051872790643, 0.008619933202794194, 3.09361149503031407]],
         }, {
             stackBars: true,
             reverseData: true,
@@ -85,6 +87,25 @@ onMounted(() => {
             height: '400px',
         });
 });
+
+const keywords = [
+    'People focused',
+    'Feeling oriented',
+    'Giving and caring',
+    'Qualitative over quantitative',
+    'Calm',
+    'Patient and accepting',
+    'Level-headed',
+    'Competitive',
+    'Intense and passionate',
+    'Serious and withdrawn',
+    'Postive outlook toward authority',
+    'Comfortable alone',
+    'Tender and forgiving',
+    'Assumes honesty',
+    'Direct in speech',
+    'Emotionally expressive',
+];
 
 </script>
 
@@ -137,9 +158,13 @@ figure {
 
 <section>
     <div class="container mx-auto max-w-screen-md flex flex-col items-center px-16">
-        <Quiz :name="'Ashani'" :questions="questions" />
-        <h3>Current Personality Assessment - Ashani</h3>
-        <div id="chart" style="width: 100%; height: 100%;" />
+        <div class="w-full">
+            <Quiz :name="'Ashani'" :questions="questions" />
+            <h3 class="text-lg">Current Personality Assessment - Ashani</h3>
+            <div id="chart" style="width: 100%; height: 100%;" />
+            <h3 class="text-lg">Current keywords - Ashani</h3>
+            <KeywordCloud :keywords="keywords" />
+        </div>
     </div>
 </section>
 

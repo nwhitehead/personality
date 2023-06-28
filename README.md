@@ -39,3 +39,8 @@ Plan: put up signup page, with catchy graphics, some text describing how it work
 
 Tried kuki, not impressed. It told me about AIML, claimed to have written an essay, then had no idea what I was talking about when I asked if there was a link to it.
 
+## Quiz
+
+Quiz should be PF16, that is more interesting than big 5 style. Found good resources at:
+[OpenPsychometrics/data](https://openpsychometrics.org/_rawdata/)
+They also have interesting stuff with movie/book recommendations, "Which Character", and other stuff.

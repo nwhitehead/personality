@@ -2,12 +2,14 @@
 # http://openpsychometrics.org/_rawdata/16PF.zip
 # In codebook are actual questions
 
-I am relaxed most of the time
-I want to be in charge.
-I joke around a lot.
 I know how to comfort others.
-I am wary of others.
-I try to follow the rules.
+
+# I am relaxed most of the time
+# I want to be in charge.
+# I joke around a lot.
+# I know how to comfort others.
+# I am wary of others.
+# I try to follow the rules.
 
 # I talk to a lot of different people at parties.
 # I read a lot.
