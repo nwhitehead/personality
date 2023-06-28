@@ -78,7 +78,7 @@ async function getCompletion(prompt, system) {
 }
 
 async function main() {
-    const { values: { nosystem, system, include }, positionals } = parseArgs({
+    const { values: { nosystem, system, number, include }, positionals } = parseArgs({
         options: {
             nosystem: {
                 type: "boolean",
@@ -88,6 +88,10 @@ async function main() {
                 type: "string",
                 short: "s",  
             },
+            number: {
+                type: "string",
+                short: "n",
+            },
             include: {
                 type: "string",
                 short: "i",
@@ -96,17 +100,20 @@ async function main() {
         },
         allowPositionals: true,
     });
+    const num = Number(number) || 1;
     const msg = positionals.join(' ');
     let systemPrompt = nosystem ? undefined : (system || 'You are a helpful cheerful assistant.');
     let prompt = "";
-    for (let file of include) {
+    for (let file of include || []) {
         process.stdout.write(`READING ${file}\n`);
         const data = fs.readFileSync(file, { encoding: 'utf-8' });
         prompt += data;
     }
     prompt += msg;
-    process.stdout.write(`systemPrompt=${systemPrompt}\nprompt=${prompt}\n`);
-    await getCompletion(prompt, system);
+    process.stdout.write(`N=${num}\nsystemPrompt=${systemPrompt}\nprompt=${prompt}\n`);
+    for (let i = 0; i < num; i++) {
+        await getCompletion(prompt, system);
+    }
 }
 
 main()

@@ -195,11 +195,15 @@ figure {
                     <figcaption><em>Bride &amp; Prejudice</em></figcaption>
                 </figure>
             </div>
-            <h3 class="text-lg">Current favorite classic actor - Ashani</h3>
+            <h3 class="text-lg">Current favorite celebrities - Ashani</h3>
             <div class="flex row">
                 <figure>
                     <img src="images/Audrey_Hepburn_1956.jpg" class="w-48" />
                     <figcaption>Audrey Hepburn</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/Princess_Diana_1985.jpg" class="w-48" />
+                    <figcaption>Princess Diana</figcaption>
                 </figure>
             </div>
         </div>
