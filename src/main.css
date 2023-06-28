@@ -125,3 +125,8 @@ footer ul {
     @apply text-sm;
     @apply text-stone-700;
 }
+
+figcaption {
+    @apply text-sm;
+    @apply text-stone-700;
+}

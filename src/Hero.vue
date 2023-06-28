@@ -178,10 +178,29 @@ figure {
             <KeywordCloud :keywords="keywords" />
             <h3 class="text-lg">Current media favorites - Ashani</h3>
             <div class="flex row">
-                <img src="images/eternalsunshine.jpg" class="w-48" />
-                <img src="images/beforeifall.jpg" class="w-48" />
-                <img src="images/benditlikebeckham.jpg" class="w-48" />
-                <img src="images/brideandprejudice.jpg" class="w-48" />
+                <figure class="flex-1">
+                    <img src="images/eternalsunshine.jpg" />
+                    <figcaption><em>Eternal Sunshine of the Spotless Mind</em></figcaption>
+                </figure>
+                <figure class="flex-1">
+                    <img src="images/beforeifall.jpg" />
+                    <figcaption><em>Before I Fall</em></figcaption>
+                </figure>
+                <figure class="flex-1">
+                    <img src="images/benditlikebeckham.jpg" />
+                    <figcaption><em>Bend it Like Beckham</em></figcaption>
+                </figure>
+                <figure class="flex-1">
+                    <img src="images/brideandprejudice.jpg" />
+                    <figcaption><em>Bride &amp; Prejudice</em></figcaption>
+                </figure>
+            </div>
+            <h3 class="text-lg">Current favorite classic actor - Ashani</h3>
+            <div class="flex row">
+                <figure>
+                    <img src="images/Audrey_Hepburn_1956.jpg" class="w-48" />
+                    <figcaption>Audrey Hepburn</figcaption>
+                </figure>
             </div>
         </div>
     </div>

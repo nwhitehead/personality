@@ -44,3 +44,7 @@ Tried kuki, not impressed. It told me about AIML, claimed to have written an ess
 Quiz should be PF16, that is more interesting than big 5 style. Found good resources at:
 [OpenPsychometrics/data](https://openpsychometrics.org/_rawdata/)
 They also have interesting stuff with movie/book recommendations, "Which Character", and other stuff.
+
+Hobbies:
+[Personality Database](https://www.personality-database.com/profile?pid=3&cid=30&sub_cat_id=31569)
+
