@@ -1,4 +1,4 @@
-Summarize the most important parts of the following dialogue in one brief sentence.
+What are the 5 most important facts about Bob and the 5 most important facts about Ashani from the following transcript?
 
 Ashani: Hi, how are you doing? I'm new here.
 
@@ -87,5 +87,3 @@ Ashani: Oh, got it. Well, now you know!
 Bob: I guess we should head back to work now.
 
 Ashani: Yeah, I should probably get going too. Nice talking to you!
-
-Summary:

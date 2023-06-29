@@ -80,3 +80,23 @@ Ashani: I went to college in the USA.
 Bob: (frustrated) Yeah, but which college? There are a lot of them.
 
 Ashani: I went to UC Berkeley.
+
+Bob: Where are we?
+
+Ashani: We're at a social work event.
+
+Bob: Is this a coffee shop? It's hard to tell.
+
+Ashani: No, it's not a coffee shop. It's a community center.
+
+Bob: Oh right.
+
+Ashani: Do you need help finding something?
+
+Bob: No, I just wanted to see where you thought we were.
+
+Ashani: Oh, got it. Well, now you know!
+
+Bob: I guess we should head back to work now.
+
+Ashani: Yeah, I should probably get going too. Nice talking to you!
