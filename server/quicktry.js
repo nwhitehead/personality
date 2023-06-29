@@ -45,7 +45,7 @@ async function* streamCompletion(data) {
     yield* linesToMessages(chunksToLines(data));
 }
 
-async function getCompletion(prompt, system) {
+async function getCompletion(prompt, system, stop) {
     const req = {
         model: "gpt-3.5-turbo",
         messages: system ? [
@@ -58,6 +58,9 @@ async function getCompletion(prompt, system) {
         max_tokens: 500,
         stream: true,
     };
+    if (stop) {
+        req.stop = stop;
+    }
     const response = await openai.createChatCompletion(req, {
         responseType: "stream",
     });
@@ -78,7 +81,7 @@ async function getCompletion(prompt, system) {
 }
 
 async function main() {
-    const { values: { nosystem, system, number, include }, positionals } = parseArgs({
+    const { values: { nosystem, system, number, include, stop }, positionals } = parseArgs({
         options: {
             nosystem: {
                 type: "boolean",
@@ -97,6 +100,10 @@ async function main() {
                 short: "i",
                 multiple: true,
             },
+            stop: {
+                type: "string",
+                short: "e",
+            },
         },
         allowPositionals: true,
     });
@@ -110,9 +117,9 @@ async function main() {
         prompt += data;
     }
     prompt += msg;
-    process.stdout.write(`N=${num}\nsystemPrompt=${systemPrompt}\nprompt=${prompt}\n`);
+    process.stdout.write(`N=${num}\nsystemPrompt=${systemPrompt}\nstop=${stop}\nprompt=${prompt}\n`);
     for (let i = 0; i < num; i++) {
-        await getCompletion(prompt, system);
+        await getCompletion(prompt, systemPrompt, stop);
     }
 }
 
