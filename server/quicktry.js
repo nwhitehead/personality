@@ -56,7 +56,7 @@ async function getCompletion(prompt, system, stop, allowfunctions) {
                 "properties": {
                     "emotion": {
                         "type": "string",
-                        "description": "The emotion to associate with the reply, e.g. angry.",
+                        "description": "The emotion to associate with the reply, e.g. 'angry', or 'neutral' for no specific emotion.",
                     },
                     "data": {
                         "type": "string",
