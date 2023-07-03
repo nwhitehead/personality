@@ -26,6 +26,7 @@ async function* chunksToLines(chunksAsync) {
         while ((eolIndex = previous.indexOf("\n")) >= 0) {
             // line includes the EOL
             const line = previous.slice(0, eolIndex + 1).trimEnd();
+            console.log(line);
             if (line === "data: [DONE]") break;
             if (line.startsWith("data: ")) yield line;
             previous = previous.slice(eolIndex + 1);
@@ -45,7 +46,27 @@ async function* streamCompletion(data) {
     yield* linesToMessages(chunksToLines(data));
 }
 
-async function getCompletion(prompt, system, stop) {
+async function getCompletion(prompt, system, stop, allowfunctions) {
+    const functions = [
+        {
+            "name": "reply",
+            "description": "Specify the reply for a character in the dialogue.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "emotion": {
+                        "type": "string",
+                        "description": "The emotion to associate with the reply, e.g. angry.",
+                    },
+                    "data": {
+                        "type": "string",
+                        "description": "The actual reply of the character in the dialogue.",
+                    },
+                },
+                "required": ["emotion", "data"],
+            },
+        },
+    ];
     const req = {
         model: "gpt-3.5-turbo",
         messages: system ? [
@@ -57,6 +78,10 @@ async function getCompletion(prompt, system, stop) {
         temperature: 0.5,
         max_tokens: 500,
         stream: true,
+        functions: functions,
+        function_call: {
+            "name": "reply",
+        },
     };
     if (stop) {
         req.stop = stop;
@@ -81,7 +106,7 @@ async function getCompletion(prompt, system, stop) {
 }
 
 async function main() {
-    const { values: { nosystem, system, number, include, stop }, positionals } = parseArgs({
+    const { values: { nosystem, system, number, include, stop, allowfunctions }, positionals } = parseArgs({
         options: {
             nosystem: {
                 type: "boolean",
@@ -104,6 +129,10 @@ async function main() {
                 type: "string",
                 short: "e",
             },
+            allowfunctions: {
+                type: "boolean",
+                short: "f",
+            },
         },
         allowPositionals: true,
     });
@@ -119,7 +148,7 @@ async function main() {
     prompt += msg;
     process.stdout.write(`N=${num}\nsystemPrompt=${systemPrompt}\nstop=${stop}\nprompt=${prompt}\n`);
     for (let i = 0; i < num; i++) {
-        await getCompletion(prompt, systemPrompt, stop);
+        await getCompletion(prompt, systemPrompt, stop, allowfunctions);
     }
 }
 
