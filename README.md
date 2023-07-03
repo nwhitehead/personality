@@ -1,21 +1,32 @@
 # AI Personality
 
-A service for creating professional AI personalities.
+A service for creating AI personalities.
 
-* Create custom AIs, define your own personality and persona.
-* Provide reference documents for knowledge database.
-* Publish your AIs to the world.
+* Create custom AIs, define your own personality and persona by answering quiz questions.
+* Interact long-term with a persistent AI.
+* Publish your AIs to the world for others.
 
 Features:
 * Comes with set of pictures for avatars (initially just Ashani)
-* Comes with example personality descriptions, fully custimizable.
 * Tools for easily tweaking and creating new personas (no typing needed)
-* Reference documents can be company related, technical, or persona backstory.
+* Quiz questions determine base personality and description, filled in with automatic details.
 * AI can update avatar image to express emotions
+* Persistent long-term memory of important details, chat history.
 
 ## Name ideas
 
 ShimmerAI
+
+## Tech Ideas
+
+Use ChatGPT-3.5 turbo for main API backend. Tried Pygmalion and open source alternatives, not good enough I think.
+
+Context needs to be limited on the input side. Maybe 512 tokens for persona info and permanent memory, then 1024 tokens
+for rolling chat history. Then 512 tokens for chat recall, memory recall. Chat recall is lines of chat, based on embedding
+similarity to current line. Memory recall is recalling specific memories that are created and stored on server by bot.
+ChatGPT uses JSON "function calls" to store memories, change emotion expressed, change "permanent" memory.
+
+Use [Spacy](https://spacy.io/) for splitting sentences for chunking.
 
 ## Testers
 
