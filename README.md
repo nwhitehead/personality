@@ -1,24 +1,17 @@
 # AI Personality
 
-A service for talking with persistent AI personalities.
+A service for creating professional AI personalities.
 
-They can remember things over time, context keeps growing and is auto summarized.
+* Create custom AIs, define your own personality and persona.
+* Provide reference documents for knowledge database.
+* Publish your AIs to the world.
 
 Features:
-* Default personalities defined, can be customized by user.
-* Personality has persistent memory storage over time, as well as historical chat context
-* Queries behind the scenes add to long term memory, summarize chats to fit into local context, manage simulated emotions.
-* Maybe hook into image generation to generate lots of images of same subject doing things (different outfits etc.)
-
-What is in a personality?
-* Everything must fit in 8K (4K?) context.
-* _Core personality_
-    * One sentence short description of character with basics. (fixed)
-    * Short paragraph of most important attributes and instructions. (fixed)
-    * Short paragraph of secondary attributes related to core personality (mutable but rarely)
-* _Current state_
-    * One sentence describing current mood, thoughts, actions
-    * One sentence describing current goals and striving
+* Comes with set of pictures for avatars (initially just Ashani)
+* Comes with example personality descriptions, fully custimizable.
+* Tools for easily tweaking and creating new personas (no typing needed)
+* Reference documents can be company related, technical, or persona backstory.
+* AI can update avatar image to express emotions
 
 ## Name ideas
 
@@ -33,11 +26,16 @@ Plan: put up signup page, with catchy graphics, some text describing how it work
 ## Competitors
 
 * replika
+* [CharStar](https://charstar.ai/)
 * [kuki](https://www.kuki.ai/about)
 * hoomano
 * koko
 
+CharStar is scary. I don't want to be in that world. Interface is nice (but doesn't stream).
+
 Tried kuki, not impressed. It told me about AIML, claimed to have written an essay, then had no idea what I was talking about when I asked if there was a link to it.
+
+In general: Pygmalion-6B is not adequate. ChatGPT-3.5 can be annoyingly prudish for "friend chats". Needs jailbreak to be at all non-professional.
 
 ## Quiz
 
@@ -47,4 +45,3 @@ They also have interesting stuff with movie/book recommendations, "Which Charact
 
 Hobbies:
 [Personality Database](https://www.personality-database.com/profile?pid=3&cid=30&sub_cat_id=31569)
-
