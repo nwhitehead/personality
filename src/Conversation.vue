@@ -53,7 +53,7 @@ function getOption(name, defaultValue) {
                     <div class="flex justify-start items-end gap-x-1">
                         <div class="shrink-0 order-first mr-1">
                             <img :src="item.emotion ? `/ashani/${item.emotion}.png` : '/ashani/neutral.png'"
-                                class="w-[36px] h-[36px] aspect-auto rounded-full" width="36" height="36">
+                                class="w-[72px] h-[72px] aspect-auto rounded-full" width="72" height="72">
                         </div>
                         <div class="bg-stone-200 text-stone-900 rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal" style="overflow-wrap: anywhere;">
                             <div
