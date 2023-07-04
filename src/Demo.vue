@@ -37,12 +37,4 @@ const dialog = [
         <Conversation :dialog="dialog" />
     </section>
 
-    <section>
-        <p>Enter text here:</p>
-        <textarea rows="10" cols="50" v-model="inputText">
-        </textarea>
-        <p>
-        </p>
-    </section>
-
 </template>
