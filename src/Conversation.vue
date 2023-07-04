@@ -4,8 +4,7 @@ import MarkdownItModule from 'markdown-it';
 import MarkdownItAttrs from 'markdown-it-attrs';
 import MarkdownItIns from 'markdown-it-ins';
 import MarkdownItMark from 'markdown-it-mark';
-import { Codemirror } from "vue-codemirror";
-
+import TextareaGrow from './TextareaGrow.vue';
 import DOMPurify from 'dompurify';
 
 const props = defineProps(['dialog', 'options']);
@@ -72,17 +71,7 @@ function getOption(name, defaultValue) {
     <div class="mx-auto px-4 md:max-w-screen-md border-stone-200">
         <div class="w-full p-4 h-fit border-t">
             <div class="flex gap-x-2 items-end">
-                <textarea class="flex grow w-full rounded-md bg-transparent px-3 py-2 text-normal
-                    resize-y
-                    focus-visible:outline-none
-                    focus-visible:ring-2
-                    disabled:cursor-not-allowed
-                    disabled:opacity-50
-                    border-stone-400 border-2
-                    placeholder:text-stone-400
-                    min-h-[45px]"
-                    rows="1"
-                    placeholder="Write your text here"></textarea>
+                <TextareaGrow />
             </div>
         </div>
     </div>
