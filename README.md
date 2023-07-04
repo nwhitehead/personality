@@ -28,6 +28,10 @@ ChatGPT uses JSON "function calls" to store memories, change emotion expressed, 
 
 Use [Spacy](https://spacy.io/) for splitting sentences for chunking.
 
+We can do summarization with:
+[BART Large CNN Samsum](https://huggingface.co/philschmid/bart-large-cnn-samsum)
+
+
 ## Testers
 
 Need alpha testers to try chats, see if things are working or not. Test each aspect of the model, each aspect of interaction.
