@@ -48,6 +48,20 @@ async function* streamCompletion(data) {
     yield* linesToMessages(chunksToLines(data));
 }
 
+function applyDelta(data, delta) {
+    for (const [key, value] of Object.entries(delta)) {
+        if (key in data) {
+            if (typeof data[key] === 'string') {
+                data[key] += value;
+            } else {
+                applyDelta(data[key], value);
+            }
+        } else {
+            data[key] = value;
+        }
+    }
+}
+
 app.ws("/api/v1/wschat", async (ws, req) => {
     ws.on("message", async (msg) => {
         try {
@@ -61,18 +75,19 @@ app.ws("/api/v1/wschat", async (ws, req) => {
                 const response = await openai.createChatCompletion(req.data, {
                     responseType: "stream",
                 });
+                let data = {};
                 for await (const message of streamCompletion(response.data)) {
                     try {
                         const parsed = JSON.parse(message);
                         console.log(parsed);
                         const delta = parsed.choices[0].delta;
-                        const text = delta.content;
-                        if (text) {
-                            console.log(text);
+                        applyDelta(data, delta);
+                        console.log(data);
+                        if (delta) {
                             ws.send(JSON.stringify({
                                 tag: "update",
                                 id: req.id,
-                                data: text,
+                                data,
                             }));
                         } else if (parsed.choices[0].finish_reason) {
                             ws.send(JSON.stringify({
@@ -92,7 +107,7 @@ app.ws("/api/v1/wschat", async (ws, req) => {
     });
 });
 
-const { PORT = 5000 } = process.env;
+const { PORT = 5050 } = process.env;
 
 app.listen(PORT, () => {
   console.log();

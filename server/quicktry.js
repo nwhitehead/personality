@@ -3,7 +3,7 @@ dotenv.config();
 
 import { parseArgs } from "node:util";
 import fs from "fs";
-import { partialParse } from "./tests/partial-json-parser.js";
+import { partialParse } from "./partial-json-parser.js";
 
 import { Configuration, OpenAIApi } from "openai";
 const configuration = new Configuration({

@@ -5,8 +5,8 @@ import Demo from './Demo.vue';
 import Hero from './Hero.vue';
 import NotFound from './NotFound.vue';
 
-export const SERVER = (import.meta.env.MODE === 'development') ? 'http://localhost:5000' : location.origin;
-export const WS_SERVER = (import.meta.env.MODE === 'development') ? 'ws://localhost:5000' : location.origin;
+export const SERVER = (import.meta.env.MODE === 'development') ? 'http://localhost:5050' : location.origin;
+export const WS_SERVER = (import.meta.env.MODE === 'development') ? 'ws://localhost:5050' : location.origin;
 
 export const routes = [
     { path: '/', component: Hero },
