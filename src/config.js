@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Demo from './Demo.vue';
 import Hero from './Hero.vue';
 import NotFound from './NotFound.vue';
+import TokenDemo from './TokenDemo.vue';
 
 export const SERVER = (import.meta.env.MODE === 'development') ? 'http://localhost:5050' : location.origin;
 export const WS_SERVER = (import.meta.env.MODE === 'development') ? 'ws://localhost:5050' : location.origin;
@@ -11,6 +12,7 @@ export const WS_SERVER = (import.meta.env.MODE === 'development') ? 'ws://localh
 export const routes = [
     { path: '/', component: Hero },
     { path: '/demo', component: Demo },
+    { path: '/tokens', component: TokenDemo },
     { path: '/:pathMatch(.*)', component: NotFound },
 ];
 

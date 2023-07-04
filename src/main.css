@@ -84,6 +84,9 @@ table {
 .markdown td {
     @apply border py-1 px-3;
 }
+.markdown p {
+    @apply pb-0;
+}
 code:not(.hljs) {
     font-weight: 700;
 }

@@ -1,7 +1,6 @@
 <script setup>
 
 import { ref, onMounted, onUnmounted } from 'vue';
-import Likert from './Likert.vue';
 import Quiz from './Quiz.vue';
 import KeywordCloud from './KeywordCloud.vue';
 
@@ -9,6 +8,7 @@ import quiz1 from '../quiz1.txt?raw';
 
 import { BarChart } from 'chartist';
 import 'chartist/dist/index.css';
+import Conversation from './Conversation.vue';
 
 function parseQuiz(txt) {
     let result = [];
@@ -179,30 +179,30 @@ figure {
             <h3 class="text-lg">Current media favorites - Ashani</h3>
             <div class="flex row">
                 <figure class="flex-1">
-                    <img src="images/eternalsunshine.jpg" />
+                    <img src="/images/eternalsunshine.jpg" />
                     <figcaption><em>Eternal Sunshine of the Spotless Mind</em></figcaption>
                 </figure>
                 <figure class="flex-1">
-                    <img src="images/beforeifall.jpg" />
+                    <img src="/images/beforeifall.jpg" />
                     <figcaption><em>Before I Fall</em></figcaption>
                 </figure>
                 <figure class="flex-1">
-                    <img src="images/benditlikebeckham.jpg" />
+                    <img src="/images/benditlikebeckham.jpg" />
                     <figcaption><em>Bend it Like Beckham</em></figcaption>
                 </figure>
                 <figure class="flex-1">
-                    <img src="images/brideandprejudice.jpg" />
+                    <img src="/images/brideandprejudice.jpg" />
                     <figcaption><em>Bride &amp; Prejudice</em></figcaption>
                 </figure>
             </div>
             <h3 class="text-lg">Current favorite celebrities - Ashani</h3>
             <div class="flex row">
                 <figure>
-                    <img src="images/Audrey_Hepburn_1956.jpg" class="w-48" />
+                    <img src="/images/Audrey_Hepburn_1956.jpg" class="w-48" />
                     <figcaption>Audrey Hepburn</figcaption>
                 </figure>
                 <figure>
-                    <img src="images/Princess_Diana_1985.jpg" class="w-48" />
+                    <img src="/images/Princess_Diana_1985.jpg" class="w-48" />
                     <figcaption>Princess Diana</figcaption>
                 </figure>
             </div>

@@ -2,15 +2,18 @@
 <script setup>
 
 import { ref, computed } from 'vue';
-import Conversation from './Conversation.vue';
+import { get_encoding, encoding_for_model } from "@dqbd/tiktoken";
+
+const encoder = get_encoding("gpt2");
 
 const inputText = ref("");
-const dialog = [
-    { who: 'human', what: 'Hello' },
-    { who: 'gpt', emotion: 'smile-1', what: 'Hi there, I\'m Ashani. What is your name?', },
-    { who: 'human', what: 'I am human.' },
-    { who: 'gpt', emotion: 'smirk', what: 'Congratulations *she said sarcastically.*\nDo you want a prize?', },
-];
+
+const stats = computed(() => {
+    return {
+        characters: inputText.value.length,
+        tokens: encoder.encode(inputText.value).length,
+    };
+});
 
 </script>
 
@@ -21,14 +24,10 @@ const dialog = [
 
             <div class="text-4xl md:text-5xl font-display font-semibold text-blue-950">
                 <p class="text-center leading-relaxed">
-                    Conversation
+                    Token Counter
                 </p>
             </div>
         </div>
-    </section>
-
-    <section>
-        <Conversation :dialog="dialog" />
     </section>
 
     <section>
@@ -36,6 +35,8 @@ const dialog = [
         <textarea rows="10" cols="50" v-model="inputText">
         </textarea>
         <p>
+        <br>Characters: {{ stats.characters }}
+        <br>Tokens: {{ stats.tokens }}
         </p>
     </section>
 
