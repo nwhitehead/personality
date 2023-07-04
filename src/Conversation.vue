@@ -1,5 +1,6 @@
 <script setup>
 
+import { ref } from 'vue';
 import MarkdownItModule from 'markdown-it';
 import MarkdownItAttrs from 'markdown-it-attrs';
 import MarkdownItIns from 'markdown-it-ins';
@@ -8,6 +9,10 @@ import TextareaGrow from './TextareaGrow.vue';
 import DOMPurify from 'dompurify';
 
 const props = defineProps(['dialog', 'options']);
+const emit = defineEmits(['submit']);
+
+const textareaValue = ref("");
+
 const md = new MarkdownItModule({})
     .use(MarkdownItAttrs)
     .use(MarkdownItIns)
@@ -27,6 +32,11 @@ function getOption(name, defaultValue) {
         return defaultValue;
     }
     return props.options.name;
+}
+
+function handleButtonClick() {
+    emit('submit', textareaValue.value);
+    textareaValue.value='';
 }
 
 </script>
@@ -53,7 +63,7 @@ function getOption(name, defaultValue) {
                     <div class="flex justify-start items-end gap-x-1">
                         <div class="shrink-0 order-first mr-1">
                             <img :src="item.emotion ? `/ashani/${item.emotion}.png` : '/ashani/neutral.png'"
-                                class="w-[72px] h-[72px] aspect-auto rounded-full" width="72" height="72">
+                                class="w-[72px] h-[72px] transition ease-in-out hover:scale-[3.0] aspect-auto rounded-full" width="72" height="72">
                         </div>
                         <div class="bg-stone-200 text-stone-900 rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal" style="overflow-wrap: anywhere;">
                             <div
@@ -71,8 +81,8 @@ function getOption(name, defaultValue) {
     <div class="mx-auto px-4 md:max-w-screen-md border-stone-200">
         <div class="w-full p-4 h-fit border-t">
             <div class="flex gap-x-2 items-end">
-                <TextareaGrow />
-                <button class="flex-none rounded-full align-bottom p-1 mb-1 ml-2 bg-blue-500 transition hover:opacity-75 text-white h-8 w-8">
+                <TextareaGrow v-model="textareaValue" @keyup.enter.exact="handleButtonClick"/>
+                <button @click="handleButtonClick" class="flex-none rounded-full align-bottom p-1 mb-1 ml-2 bg-blue-500 transition hover:opacity-75 text-white h-8 w-8">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" stroke-width="1.8" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
                     </svg>
