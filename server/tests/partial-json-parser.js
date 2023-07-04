@@ -19,7 +19,6 @@ function getNonWhitespaceCharacterOfStringAt(s, i) {
 };
 
 export function partialParse(s) {
-    console.log('partialParse', typeof s, s);
     s = s.replace(/\r\n/g, '');
     if (s === "") {
         return undefined;
@@ -69,7 +68,6 @@ export function partialParse(s) {
                             lastKV = '';
                         }
                         j++;
-                        console.log('j', j);
                         break;
                     }
                 } else if (s[j] === ',') {
@@ -90,14 +88,17 @@ export function partialParse(s) {
                     }
                 }
             }
-            lastKV = lastKV.split('').reverse().join('');
-            console.log(`typeof lastKV=${typeof lastKV} lastKV=${lastKV}`);
-            if (lastKV !== 'false' &&
-                lastKV !== 'true' &&
-                lastKV !== 'null' &&
-                lastKV.match(/^\d+$/) === null &&
-                !(lastKV.length !== 1 && lastKV[0] === '"' && lastKV[lastKV.length - 1] === '"')) {
+            lastKV = lastKV.split('').reverse().join('').trimStart();
+            const isPartialString = lastKV.length > 1 && lastKV[0] === '"' && lastKV[lastKV.length - 1] !== '"';
+            if (isPartialString) {
+                s += '"';
+            } else {
+                const isFinishedString = lastKV.length !== 1 && lastKV[0] === '"' && lastKV[lastKV.length - 1] === '"';
+                const isLegalConst = lastKV === 'false' || lastKV === 'true' || lastKV === 'null';
+                const isLegalNumber = lastKV.match(/^\d+$/) !== null;
+                if (!isLegalConst && !isLegalNumber && !isFinishedString && !isPartialString) {
                     s = s.slice(0, j);
+                }
             }
         }
     }
@@ -111,6 +112,5 @@ export function partialParse(s) {
         s = s.slice(0, lastCharacter.index);
     }
     tail = tail.reverse();
-    console.log(`JSON : ${s} : ${tail} : ${s + tail.join('')}`);
     return JSON.parse(s + tail.join(''));
 }

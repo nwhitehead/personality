@@ -6,4 +6,5 @@ for (let i = 0; i < test.length; i++) {
     const t = test.slice(0, i);
     console.log(`Parsing type=${typeof t} length=${t.length}\n${t}`);
     const result = partialParse(t);
+    console.log(`Parsing type=${typeof t} length=${t.length}\n${t} result=${JSON.stringify(result)}`);
 }
