@@ -42,12 +42,10 @@ function getOption(name, defaultValue) {
                             <img src="/images/anonymous.png" class="w-[36px] h-[36px] aspect-auto rounded-full" width="36" height="36">
                         </div>
                         <div class="bg-blue-500 text-white rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal" style="overflow-wrap: anywhere;">
-                            <div class="flex flex-col gap-y-2">
-                                <div
-                                    class="markdown"
-                                    v-html="DOMPurify.sanitize(md.render(item.what))"
-                                />                                
-                            </div>
+                            <div
+                                class="markdown flex flex-col gap-y-2"
+                                v-html="DOMPurify.sanitize(md.render(item.what))"
+                            />                                
                         </div>
                     </div>
                 </template>
@@ -58,12 +56,10 @@ function getOption(name, defaultValue) {
                                 class="w-[36px] h-[36px] aspect-auto rounded-full" width="36" height="36">
                         </div>
                         <div class="bg-stone-200 text-stone-900 rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal" style="overflow-wrap: anywhere;">
-                            <div class="flex flex-col gap-y-2">
-                                <div
-                                    class="markdown"
-                                    v-html="DOMPurify.sanitize(md.render(item.what))"
-                                />                                
-                            </div>
+                            <div
+                                class="markdown flex flex-col gap-y-2"
+                                v-html="DOMPurify.sanitize(md.render(item.what))"
+                            />                                
                         </div>
                     </div>
                 </template>
