@@ -39,7 +39,7 @@ function getOption(name, defaultValue) {
                 <template v-if="item.who === 'human'">
                     <div class="flex justify-end items-end gap-x-1">
                         <div class="shrink-0 order-last mr-1">
-                            <img src="/images/anonymous.png" class="w-[36px] h-[36px] aspect-auto rounded-full" width="36" height="36">
+                            <img src="/images/anonymous.png" class="w-[72px] h-[72px] aspect-auto rounded-full" width="72" height="72">
                         </div>
                         <div class="bg-blue-500 text-white rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal" style="overflow-wrap: anywhere;">
                             <div
@@ -72,6 +72,11 @@ function getOption(name, defaultValue) {
         <div class="w-full p-4 h-fit border-t">
             <div class="flex gap-x-2 items-end">
                 <TextareaGrow />
+                <button class="flex-none rounded-full align-bottom p-1 mb-1 ml-2 bg-blue-500 transition hover:opacity-75 text-white h-8 w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" stroke-width="1.8" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
