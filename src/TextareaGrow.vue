@@ -29,6 +29,9 @@ onMounted(() => {
     resize();
 });
 
+defineExpose({
+    elem,
+});
 </script>
 
 <template>

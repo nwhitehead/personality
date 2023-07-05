@@ -1,10 +1,9 @@
 
 <script setup>
 
-import { reactive, ref, computed } from 'vue';
+import { reactive } from 'vue';
 import Conversation from './Conversation.vue';
 
-const inputText = ref("");
 const dialog = reactive([
     { who: 'gpt', what: 'Hello, I\'m Ashani.\n\n*She extends her hand to shake.*\n\nTo whom do I have the pleasure of speaking?' },
     { who: 'human', what: 'Hi, I\'m Nathan.' },

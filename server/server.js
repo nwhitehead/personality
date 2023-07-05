@@ -72,34 +72,34 @@ app.ws("/api/v1/wschat", async (ws, req) => {
             }
             if (req.tag === "chat") {
                 console.log("start chat generation");
-                const response = await openai.createChatCompletion(req.data, {
-                    responseType: "stream",
-                });
-                let data = {};
-                for await (const message of streamCompletion(response.data)) {
-                    try {
-                        const parsed = JSON.parse(message);
-                        console.log(parsed);
-                        const delta = parsed.choices[0].delta;
-                        applyDelta(data, delta);
-                        console.log(data);
-                        if (delta) {
-                            ws.send(JSON.stringify({
-                                tag: "update",
-                                id: req.id,
-                                data,
-                            }));
-                        } else if (parsed.choices[0].finish_reason) {
-                            ws.send(JSON.stringify({
-                                tag: "done",
-                                id: req.id,
-                                data: parsed.choices[0].finish_reason,
-                            }));
-                        }
-                    } catch (error) {
-                        console.error("Could not JSON parse stream message", message, error);
-                    }
-                }
+                // const response = await openai.createChatCompletion(req.data, {
+                //     responseType: "stream",
+                // });
+                // let data = {};
+                // for await (const message of streamCompletion(response.data)) {
+                //     try {
+                //         const parsed = JSON.parse(message);
+                //         console.log(parsed);
+                //         const delta = parsed.choices[0].delta;
+                //         applyDelta(data, delta);
+                //         console.log(data);
+                //         if (delta) {
+                //             ws.send(JSON.stringify({
+                //                 tag: "update",
+                //                 id: req.id,
+                //                 data,
+                //             }));
+                //         } else if (parsed.choices[0].finish_reason) {
+                //             ws.send(JSON.stringify({
+                //                 tag: "done",
+                //                 id: req.id,
+                //                 data: parsed.choices[0].finish_reason,
+                //             }));
+                //         }
+                //     } catch (error) {
+                //         console.error("Could not JSON parse stream message", message, error);
+                //     }
+                // }
             }
         } catch(error) {
             console.log("Could not parse JSON request on /api/v1/wschat");

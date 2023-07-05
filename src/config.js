@@ -1,6 +1,7 @@
 
 import { createRouter, createWebHistory } from 'vue-router';
 
+import Chat from './Chat.vue';
 import Demo from './Demo.vue';
 import Hero from './Hero.vue';
 import NotFound from './NotFound.vue';
@@ -11,6 +12,7 @@ export const WS_SERVER = (import.meta.env.MODE === 'development') ? 'ws://localh
 
 export const routes = [
     { path: '/', component: Hero },
+    { path: '/chat', component: Chat },
     { path: '/demo', component: Demo },
     { path: '/tokens', component: TokenDemo },
     { path: '/:pathMatch(.*)', component: NotFound },
