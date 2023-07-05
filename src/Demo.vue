@@ -15,6 +15,8 @@ const dialog = reactive([
     { who: 'gpt', emotion: 'frown-1', what: 'Let\'s see, that would be Admissions. What should I tell them the problem is?' },
     { who: 'human', what: 'They rejected my daughter for no reason.' },
     { who: 'gpt', emotion: 'angry', what: 'That is totally unacceptable.' },
+    { who: 'human', what: 'I know' },
+    { who: 'gpt', emotion: 'angry', what: '' },
 ]);
 
 function handleSubmit(v) {

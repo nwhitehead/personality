@@ -65,14 +65,13 @@ function handleButtonClick() {
                             <img :src="item.emotion ? `/ashani/${item.emotion}.png` : '/ashani/neutral.png'"
                                 class="w-[72px] h-[72px] transition ease-in-out hover:scale-[3.0] aspect-auto rounded-full" width="72" height="72">
                         </div>
-                        <div class="bg-stone-200 text-stone-900 rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal">
-                            <div class="dot-flashing mx-4" />
-                        </div>
                         <div class="bg-stone-200 text-stone-900 rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal" style="overflow-wrap: anywhere;">
                             <div
+                                v-if="item.what !== ''"
                                 class="markdown flex flex-col gap-y-2"
                                 v-html="DOMPurify.sanitize(md.render(item.what))"
                             />                                
+                            <div v-if="item.what === ''" class="dot-flashing mx-4" />
                         </div>
                     </div>
                 </template>
