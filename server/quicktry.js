@@ -92,16 +92,36 @@ async function getCompletion(prompt, system, stop, allowfunctions, cb) {
             "parameters": {
                 "type": "object",
                 "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the character who is replying.",
+                    },
                     "emotion": {
                         "type": "string",
-                        "description": "The emotion to associate with the reply, e.g. 'angry', or 'neutral' for no specific emotion.",
+                        "description": "The emotion to associate with the reply, e.g. 'angry'. Use 'neutral' for no specific emotion.",
                     },
                     "data": {
                         "type": "string",
                         "description": "The actual reply of the character in the dialogue.",
                     },
+                    "choice0": {
+                        "type": "string",
+                        "description": "What User might respond to this character reply. This choice should be the most obvious thing User might say.",
+                    },
+                    "choice1": {
+                        "type": "string",
+                        "description": "What User might respond to this character reply. This choice should be a more negative thing User might say.",
+                    },
+                    "choice2": {
+                        "type": "string",
+                        "description": "What User might respond to this character reply. This choice should be a creative and original thing User might say.",
+                    },
+                    "choice3": {
+                        "type": "string",
+                        "description": "What User might respond to this character reply. This choice should be a zany and sometimes ridiculous thing User might say.",
+                    },
                 },
-                "required": ["emotion", "data"],
+                "required": ["name", "emotion", "data", "choice0"],
             },
         },
     ];
@@ -114,7 +134,7 @@ async function getCompletion(prompt, system, stop, allowfunctions, cb) {
             {role: "user", content: prompt},
         ],
         temperature: 0.5,
-        max_tokens: 500,
+        max_tokens: 1000,
         stream: true,
         functions: functions,
         function_call: {
