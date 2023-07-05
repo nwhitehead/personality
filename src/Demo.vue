@@ -13,7 +13,7 @@ const dialog = reactive([
     { who: 'gpt', emotion: 'frown-1', what: 'Oh, I\'m sorry to hear that. What department would you like me to forward it to?' },
     { who: 'human', what: 'Whoever is in charge of college admissions.' },
     { who: 'gpt', emotion: 'frown-1', what: 'Let\'s see, that would be Admissions. What should I tell them the problem is?' },
-    { who: 'human', what: 'The rejected my daughter for no reason.' },
+    { who: 'human', what: 'They rejected my daughter for no reason.' },
     { who: 'gpt', emotion: 'angry', what: 'That is totally unacceptable.' },
 ]);
 
