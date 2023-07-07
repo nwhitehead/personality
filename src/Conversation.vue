@@ -43,7 +43,6 @@ function handleButtonClick() {
 watch(() => { return props.userInputDisabled; }, (newValue) => {
     if (!newValue.value) {
         // When disabled does from true to false, focus the text input
-        console.log(textareaElem.value.elem);
         nextTick(() => {
             textareaElem.value.elem.focus();
         });

@@ -48,25 +48,11 @@ async function* streamCompletion(data) {
     yield* linesToMessages(chunksToLines(data));
 }
 
-function applyDelta(data, delta) {
-    for (const [key, value] of Object.entries(delta)) {
-        if (key in data) {
-            if (typeof data[key] === 'string') {
-                data[key] += value;
-            } else {
-                applyDelta(data[key], value);
-            }
-        } else {
-            data[key] = value;
-        }
-    }
-}
-
 app.ws("/api/v1/wschat", async (ws, req) => {
     ws.on("message", async (msg) => {
         try {
             const req = JSON.parse(msg);
-            console.log('ws://api/v1/wschat', req);
+            console.log('ws://api/v1/wschat', JSON.stringify(req));
             if (req.tag === "stop") {
                 console.log("stop generating received");
             }

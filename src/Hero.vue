@@ -162,7 +162,7 @@ figure {
 
         <div class="flex flex-row my-16">
             <figure class="pic">
-                <img :src="getAshaniEmotionImage()" class="w-64 rounded-full" /><figcaption>Ashani has emotions.</figcaption>
+                <img :src="getAshaniEmotionImage()" class="w-64 rounded-full hover:scale-[2.0]" /><figcaption>Ashani has emotions.</figcaption>
             </figure>
         </div>
     </div>
