@@ -100,6 +100,10 @@ async function getCompletion(prompt, system, stop, allowfunctions, cb) {
                         "type": "string",
                         "description": "The emotion to associate with the reply, e.g. 'angry'. Use 'neutral' for no specific emotion.",
                     },
+                    "thoughts": {
+                        "type": "string",
+                        "description": "A short description of the inner thoughts of the character. These thoughts are not revealed to other characters."
+                    },
                     "data": {
                         "type": "string",
                         "description": "The actual reply of the character in the dialogue.",
@@ -121,7 +125,7 @@ async function getCompletion(prompt, system, stop, allowfunctions, cb) {
                         "description": "What User might respond to this character reply. This choice should be a zany and sometimes ridiculous thing User might say.",
                     },
                 },
-                "required": ["name", "emotion", "data", "choice0"],
+                "required": ["name", "emotion", "thoughts", "data", "choice0"],
             },
         },
     ];

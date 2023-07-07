@@ -18,6 +18,13 @@ const dialog = reactive([
     { who: 'gpt', emotion: 'angry', what: '' },
 ]);
 
+const choices = [
+    "What are you trying to say?",
+    "Yeah, that's what I thought as well.",
+    "Hmm, I'm not sure.",
+    "How about we play a game of number trivia? I'll give you a number, and you have to tell me if it's prime or not.",
+];
+
 function handleSubmit(v) {
     if (v !== '\n') {
         dialog.push({ who: 'human', what: v});
@@ -39,7 +46,7 @@ function handleSubmit(v) {
     </section>
 
     <section>
-        <Conversation :dialog="dialog" @submit="handleSubmit" />
+        <Conversation :dialog="dialog" @submit="handleSubmit" :choices="choices" />
     </section>
 
 </template>

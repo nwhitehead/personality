@@ -8,7 +8,7 @@ import MarkdownItMark from 'markdown-it-mark';
 import TextareaGrow from './TextareaGrow.vue';
 import DOMPurify from 'dompurify';
 
-const props = defineProps(['dialog', 'options', 'userInputDisabled']);
+const props = defineProps(['dialog', 'options', 'userInputDisabled', 'choices']);
 const emit = defineEmits(['submit']);
 
 const textareaValue = ref("");
@@ -72,7 +72,7 @@ watch(() => { return props.userInputDisabled; }, (newValue) => {
                     <div class="flex justify-start items-end gap-x-1">
                         <div class="shrink-0 order-first mr-1">
                             <img :src="item.emotion ? `/ashani/${item.emotion}.png` : '/ashani/neutral.png'"
-                                class="w-[72px] h-[72px] transition ease-in-out hover:scale-[3.0] aspect-auto rounded-full" width="72" height="72">
+                                class="w-[72px] h-[72px] transition ease-in-out  hover:-translate-x-14 hover:scale-[3.0] aspect-auto rounded-full" width="72" height="72">
                         </div>
                         <div class="bg-stone-200 text-stone-900 rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal" style="overflow-wrap: anywhere;">
                             <div
@@ -102,6 +102,11 @@ watch(() => { return props.userInputDisabled; }, (newValue) => {
                     </svg>
                 </button>
             </div>
+            <template v-for="choice in props.choices">
+                <button class="text-left flex-none rounded-2xl align-bottom mt-1 px-3 py-2 bg-blue-500 transition hover:opacity-75 text-white h-full w-full">
+                    {{choice}}
+                </button>
+            </template>
         </div>
     </div>
 
