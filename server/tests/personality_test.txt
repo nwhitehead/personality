@@ -1,0 +1,14 @@
+I am writing a fictional dialogue about a character Bob. Bob is a 20 year old man that lives in Chicago.
+
+For each statement below, guess whether Bob would strongly disagree, disagree, neither agree nor disagree, agree, or strongly agree with the statement. Do not provide explanations. Format your answer as a list of numbers, where 1 means strongly disagree, 2 means disagree, 3 means neither agree nor disagree, 4 means agree, and 5 means strongly agree.
+
+1. I enjoy bringing people together.
+2. I feel others' emotions.
+3. I make insightful remarks.
+4. I learn quickly.
+5. I feel comfortable with myself.
+6. I am easily discouraged.
+7. I want to be in charge.
+8. I take control of things.
+9. I love large parties.
+10. I amuse my friends.

@@ -51,7 +51,10 @@ CharStar is scary. I don't want to be in that world. Interface is nice (but does
 Tried kuki, not impressed. It told me about AIML, claimed to have written an essay, then had no idea what I was talking about when I asked if there was a link to it.
 
 In general: Pygmalion-6B is not adequate. ChatGPT-3.5 can be annoyingly prudish for "friend chats". Needs jailbreak to be at all non-professional. But with
-reasonable system prompt can be intelligent and actually friendly.
+reasonable system prompt can be intelligent and actually friendly. For local models, my favorites are:
+* WizardLM-13B-V1.1-GPTQ
+* Pygmalion-13B-SuperHOT-8K-GPTQ
+
 
 ## Quiz
 
@@ -59,8 +62,17 @@ Quiz should be PF16, that is more interesting than big 5 style. Found good resou
 [OpenPsychometrics/data](https://openpsychometrics.org/_rawdata/)
 They also have interesting stuff with movie/book recommendations, "Which Character", and other stuff.
 
+Wikipedia on PF16 has descriptors for low and high for each factor:
+https://en.wikipedia.org/wiki/16PF_Questionnaire
+
+Best Big-5 one:
+[OpenPsychometrics big-5](https://openpsychometrics.org/printable/big-five-personality-test.pdf)
+
 Hobbies:
 [Personality Database](https://www.personality-database.com/profile?pid=3&cid=30&sub_cat_id=31569)
+
+OkCupid had good quizzes back in the day. Some are available for psychological research.
+[OkCupid Dataset paper](https://openpsych.net/paper/46/)
 
 ## Costs
 

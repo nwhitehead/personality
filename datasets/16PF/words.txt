@@ -1,0 +1,38 @@
+A   warmth
+B   reasoning
+C   emotional stability
+D   dominance
+E   liveliness
+F   rule consciousness
+G   social boldness
+H   sensitivity
+I   vigilance
+J   abstractedness
+K   privateness
+L   apprehension
+M   openness to change
+N   self reliance
+O   perfectionism
+P   tension
+
+A warm
+C stable
+D assertive
+E talkative (gregariousness)
+F dutiful
+G friendly
+H sensitive
+I distrust
+J imagination
+K reserved
+L anxious
+M complex
+N introvert
+O orderly
+P emotional
+
+
+A   Impersonal, distant, cool, reserved, detached, formal, aloof
+A   Warm, outgoing, attentive to others, kindly, easygoing, participating, likes people
+B   Concrete-thinking, less intelligent, lower general mental capacity, unable to handle abstract problems
+B   Abstract-thinking, more intelligent, bright, higher general mental capacity, fast-learner

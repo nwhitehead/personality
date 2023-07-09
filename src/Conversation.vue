@@ -103,7 +103,7 @@ watch(() => { return props.userInputDisabled; }, (newValue) => {
                 </button>
             </div>
             <template v-for="choice in props.choices">
-                <button class="text-left flex-none rounded-2xl align-bottom mt-1 px-3 py-2 bg-blue-500 transition hover:opacity-75 text-white h-full w-full">
+                <button class="text-left flex-none align-bottom mt-1 px-3 py-2 transition hover:opacity-75 text-stone-500 h-full w-full text-xs">
                     {{choice}}
                 </button>
             </template>
