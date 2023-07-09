@@ -4,7 +4,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import Quiz from './Quiz.vue';
 import KeywordCloud from './KeywordCloud.vue';
 
-import quiz1 from '../quiz1.txt?raw';
+import quiz from '../quiz_full.txt?raw';
 
 import { BarChart } from 'chartist';
 import 'chartist/dist/index.css';
@@ -33,7 +33,7 @@ function parseQuiz(txt) {
     return result;
 }
 
-const questions = parseQuiz(quiz1);
+const questions = parseQuiz(quiz);
 
 const ashaniEmotion = ref('smile-1');
 

@@ -32,7 +32,35 @@ O orderly
 P emotional
 
 
-A   Impersonal, distant, cool, reserved, detached, formal, aloof
-A   Warm, outgoing, attentive to others, kindly, easygoing, participating, likes people
-B   Concrete-thinking, less intelligent, lower general mental capacity, unable to handle abstract problems
-B   Abstract-thinking, more intelligent, bright, higher general mental capacity, fast-learner
+A-  Impersonal, distant, cool, reserved, detached, formal, aloof
+A+  Warm, outgoing, attentive to others, kindly, easygoing, participating, likes people
+B-  Concrete-thinking, less intelligent, lower general mental capacity, unable to handle abstract problems
+B+  Abstract-thinking, more intelligent, bright, higher general mental capacity, fast-learner
+C-  Reactive emotionally, changeable, affected by feelings, emotionally less stable, easily upset
+C+  Emotionally stable, adaptive, mature, faces reality calmly
+D-  Deferential, cooperative, avoids conflict, submissive, humble, obedient, easily led, docile, accommodating
+D+  Dominant, forceful, assertive, aggressive, competitive, stubborn, bossy
+E-  Serious, restrained, prudent, taciturn, introspective, silent
+E+  Lively, animated, spontaneous, enthusiastic, happy-go-lucky, cheerful, expressive, impulsive
+F-  Expedient, nonconforming, disregards rules, self-indulgent
+F+  Rule-conscious, dutiful, conscientious, conforming, moralistic, staid, rule-bound
+G-  Shy, threat-sensitive, timid, hesitant, intimidated
+G+  Socially bold, venturesome, thick-skinned, uninhibited
+H-  Utilitarian, objective, unsentimental, tough-minded, self-reliant, no-nonsense, rough
+H+  Sensitive, aesthetic, sentimental, tender-minded, intuitive, refined
+I-  Trusting, unsuspecting, accepting, unconditional, easy
+I+  Vigilant, suspicious, skeptical, distrustful, oppositional
+J-  Grounded, practical, prosaic, solution oriented, steady, conventional 
+J+  Abstract, imaginative, absentminded, impractical, absorbed in ideas
+K-  Forthright, genuine, artless, open, guileless, naive, unpretentious, involved
+K+  Private, discreet, nondisclosing, shrewd, polished, worldly, astute, diplomatic
+L-  Self-assured, unworried, complacent, secure, free of guilt, confident, self-satisfied
+L+  Apprehensive, self-doubting, worried, guilt-prone, insecure, worrying, self-blaming
+M-  Traditional, attached to familiar, conservative, respecting traditional ideas
+M+  Open to change, experimental, liberal, analytical, critical, freethinking, flexibility
+N-  Group-oriented, affiliative, a joiner and follower dependent
+N+  Self-reliant, solitary, resourceful, individualistic, self-sufficient
+O-  Tolerates disorder, unexacting, flexible, undisciplined, lax, self-conflict, impulsive, careless of social rules, uncontrolled
+O+  Perfectionistic, organized, compulsive, self-disciplined, socially precise, exacting will power, control, self-sentimental
+P-  Relaxed, placid, tranquil, torpid, patient, composed low drive
+P+  Tense, high-energy, impatient, driven, frustrated, over-wrought, time-driven

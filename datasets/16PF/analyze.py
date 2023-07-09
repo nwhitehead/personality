@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 # Read data from csv (semicolon separated)
@@ -9,7 +10,6 @@ data = pd.read_csv('data.csv', delimiter='\t')
 # There are 163 questions in the survey
 # Here are the people that filled out all 163 questions (no 0 blank answers)
 full = data[(data.T.head(163) != 0).all()][:]
-#print(full)
 
 # Compute new column for total attribute (with + and - based on question)
 # Data format here is key is name prefix, then value is range tuple (lo, hi).
@@ -31,7 +31,7 @@ num_positive = {
     'M': (5, 10),
     'N': (7, 10),
     'O': (5, 10),
-    'P': (7, 9),
+    'P': (7, 10),
 }
 
 # Use table above to add columns for scores
@@ -49,6 +49,22 @@ for k in num_positive:
     full[label_all] = t
     full[f'{k}_z'] = (full[label_all] - full[label_all].median() ) / full[label_all].std()
 
-print(full['B_z'].describe())
+cov = full[[f'{k}_z' for k in num_positive]].cov()
+print(cov)
 
-print(full[[f'{k}_z' for k in num_positive]].cov())
+r = full[[f'{k}_z' for k in num_positive]].to_numpy()
+print(r.shape)
+# print(np.cov(r.T)) # This matches the .cov() from pandas
+
+c = np.linalg.cholesky(cov)
+# print(c)
+
+x = np.random.randn(100000, 16)
+y = x @ c.T
+print(y.shape)
+print(np.cov(y.T))
+
+np.save('cholcov', c.T, allow_pickle=False)
+
+# YES, it matches cov
+print(np.cov(y.T) - cov)

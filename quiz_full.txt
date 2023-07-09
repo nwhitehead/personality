@@ -1,0 +1,163 @@
+A+|I know how to comfort others
+A+|I enjoy bringing people together
+A+|I feel others' emotions
+A+|I take an interest in other people's lives
+A+|I cheer people up
+A+|I make people feel at ease
+A+|I take time out for others
+A-|I don't like to get involved in other people's problems
+A-|I am not really interested in others
+A-|I try not to think about the needy
+B+|I make insightful remarks
+B+|I know the answers to many questions
+B+|I tend to analyze things
+B+|I use my brain
+B+|I learn quickly
+B+|I counter others' arguments
+B+|I reflect on things before acting
+B+|I weigh the pros against the cons
+B-|I consider myself an average person
+B-|I get confused easily
+B-|I know that I am not a special person
+B-|I have a poor vocabulary
+B-|I skip difficult words while reading
+C+|I seldom feel blue
+C+|I feel comfortable with myself
+C+|I readily overcome setbacks
+C+|I am relaxed most of the time
+C+|I am not easily frustrated
+C-|I have frequent mood swings
+C-|I often feel blue
+C-|I dislike myself
+C-|I feel desperate
+C-|I am easily discouraged
+D+|I take charge
+D+|I want to be in charge
+D+|I say what I think
+D+|I am not afraid of providing criticism
+D+|I take control of things
+D+|I can take strong measures
+D-|I wait for others to lead the way
+D-|I never challenge things
+D-|I let others make the decisions
+D-|I let myself be pushed around
+E+|I am the life of the party
+E+|I love large parties
+E+|I joke around a lot
+E+|I enjoy being part of a loud crowd
+E+|I amuse my friends
+E+|I act wild and crazy
+E-|I seldom joke around
+E-|I don't like crowded events
+E-|I am the last to laugh at a joke
+E-|I dislike loud music
+F+|I believe laws should be strictly enforced
+F+|I try to follow the rules
+F+|I believe in one true religion
+F+|I respect authority
+F+|I like to stand during the national anthem
+F-|I resist authority
+F-|I break rules
+F-|I use swear words
+F-|I oppose authority
+F-|I know how to get around the rules
+G+|I feel comfortable around people
+G+|I talk to a lot of different people at parties
+G+|I don't mind being the center of attention
+G+|I make friends easily
+G+|I start conversations
+G-|I find it difficult to approach others
+G-|I often feel uncomfortable around others
+G-|I have little to say
+G-|I am quiet around strangers
+G-|I keep in the background
+H+|I like to read
+H+|I enjoy discussing movies and books with others
+H+|I read a lot
+H+|I don't like action movies
+H+|I cry during movies
+H+|I love flowers
+H-|I do not enjoy watching dance performances
+H-|I do not like poetry
+H-|I dislike works of fiction
+H-|I rarely notice my emotional reactions
+I+|I find it hard to forgive others
+I+|I suspect hidden motives in others
+I+|I am wary of others
+I+|I distrust people
+I+|I believe that people seldom tell you the whole truth
+I+|I believe that people are essentially evil
+I-|I trust what people say
+I-|I trust others
+I-|I believe that others have good intentions
+I-|I believe that people are basically moral
+J+|I do things that others find strange
+J+|I like to get lost in thought
+J+|I enjoy wild flights of fantasy
+J+|I love to daydream
+J+|I swim against the current
+J+|I take deviant positions
+J+|I do unexpected things
+J-|I do things by the book
+J-|I seldom daydream
+J-|I seldom get lost in thought
+K+|I reveal little about myself
+K+|I am hard to get to know
+K+|I don't talk a lot
+K+|I bottle up my feelings
+K+|I keep my thoughts to myself
+K-|I am open about myself to others
+K-|I am open about my feelings
+K-|I disclose my intimate thoughts
+K-|I show my feelings
+K-|I am willing to talk about myself
+L+|I am afraid that I will do the wrong thing
+L+|I feel threatened easily
+L+|I am easily hurt
+L+|I worry about things
+L+|I spend time thinking about past mistakes
+L+|I feel guilty when I say 'no'
+L+|I feel crushed by setbacks
+L-|I don't worry about things that have already happened
+L-|I am not easily bothered by things
+L-|I don't let others discourage me
+M+|I believe in the importance of art
+M+|I love to think up new ways of doing things
+M+|I enjoy hearing new ideas
+M+|I carry the conversation to a higher level
+M+|I prefer variety to routine
+M-|I avoid philosophical discussions
+M-|I rarely look for a deeper meaning in things
+M-|I am not interested in theoretical discussions
+M-|I am not interested in abstract ideas
+M-|I try to avoid complex people
+N+|I want to be left alone
+N+|I prefer to do things by myself
+N+|I enjoy spending time by myself
+N+|I seek quiet
+N+|I don't mind eating alone
+N+|I enjoy silence
+N+|I enjoy my privacy
+N-|I enjoy being part of a group
+N-|I enjoy teamwork
+N-|I can't do without the company of others
+O+|I want everything to be 'just right'
+O+|I get chores done right away
+O+|I like order
+O+|I continue until everything is perfect
+O+|I am exacting in my work
+O-|I am not bothered by messy people
+O-|I am not bothered by disorder
+O-|I leave a mess in my room
+O-|I leave my belongings around
+O-|I put off unpleasant tasks
+P+|I get irritated easily
+P+|I get angry easily
+P+|I am quick to judge others
+P+|I am annoyed by others' mistakes
+P+|I am easily put out
+P+|I can't stand being contradicted
+P+|I judge people by their appearance
+P-|I am not easily annoyed
+P-|I try to forgive and forget
+P-|I have a good word for everyone
