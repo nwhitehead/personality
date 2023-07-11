@@ -48,12 +48,27 @@ watch(() => { return props.userInputDisabled; }, (newValue) => {
         });
     }
 })
+
+function isLast(index, dialog) {
+    return {
+        'zoom-active': index == dialog.length - 1
+    }
+}
 </script>
+
+<style>
+.zoom {
+    @apply transition ease-in-out hover:-translate-x-14 hover:scale-[3.0];
+}
+.zoom-active {
+    @apply -translate-x-10 scale-[2.0];
+}
+</style>
 
 <template>
 
     <div class="mx-auto px-4 md:max-w-screen-md">
-        <div v-for="item in props.dialog" class="mt-4 mb-4 last:mb-0">
+        <div v-for="(item, index) in props.dialog" class="mt-4 mb-4 last:mb-0">
             <div class="flex flex-col">
                 <template v-if="item.who === 'human'">
                     <div class="flex justify-end items-end gap-x-1">
@@ -72,7 +87,9 @@ watch(() => { return props.userInputDisabled; }, (newValue) => {
                     <div class="flex justify-start items-end gap-x-1">
                         <div class="shrink-0 order-first mr-1">
                             <img :src="item.emotion ? `/ashani/${item.emotion}.png` : '/ashani/neutral.png'"
-                                class="w-[72px] h-[72px] transition ease-in-out  hover:-translate-x-14 hover:scale-[3.0] aspect-auto rounded-full" width="72" height="72">
+                                class="w-[72px] h-[72px] zoom aspect-auto rounded-full"
+                                :class="isLast(index, props.dialog)"
+                                width="72" height="72">
                         </div>
                         <div class="bg-stone-200 text-stone-900 rounded-2xl px-3 py-2 max-w-[67%] whitespace-normal" style="overflow-wrap: anywhere;">
                             <div

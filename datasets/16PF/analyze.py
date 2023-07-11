@@ -64,7 +64,9 @@ y = x @ c.T
 print(y.shape)
 print(np.cov(y.T))
 
-np.save('cholcov', c.T, allow_pickle=False)
+np.save('cholcov', c, allow_pickle=False)
 
 # YES, it matches cov
 print(np.cov(y.T) - cov)
+
+np.save('cov', cov, allow_pickle=False)

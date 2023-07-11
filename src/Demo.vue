@@ -3,6 +3,9 @@
 
 import { reactive } from 'vue';
 import Conversation from './Conversation.vue';
+import cholcov_matrix from './cholcov.json';
+
+import randn from '@stdlib/random/base/randn';
 
 const dialog = reactive([
     { who: 'gpt', what: 'Hello, I\'m Ashani.\n\n*She extends her hand to shake.*\n\nTo whom do I have the pleasure of speaking?' },
@@ -25,10 +28,34 @@ const choices = [
     "How about we play a game of number trivia? I'll give you a number, and you have to tell me if it's prime or not.",
 ];
 
+/// A is 1 x m (vector)
+/// B is m x n (matrix)
+/// result is A @ B, 1 x n (vector)
+function matrix_mult_vm(m, n, A, B) {
+    let C = new Array(n);
+    for (let i = 0; i < n; i++) {
+        C[i] = 0;
+    }
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            C[j] += A[i] * B[i][j];
+        }
+    }
+    return C;
+}
 function handleSubmit(v) {
+    const P = 16;
+    let z = [];
+    for (let i = 0; i < P; i++) {
+        z.push(randn());
+    }
+    let zc = matrix_mult_vm(P, P, z, cholcov_matrix);
+    console.log(cholcov_matrix);
+    console.log(z, zc);
     if (v !== '\n') {
         dialog.push({ who: 'human', what: v});
     }
+    
 }
 </script>
 
