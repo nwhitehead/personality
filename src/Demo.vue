@@ -52,6 +52,12 @@ function handleSubmit(v) {
     let zc = matrix_mult_vm(P, P, z, cholcov_matrix);
     console.log(cholcov_matrix);
     console.log(z, zc);
+    let zz = [1,1];
+    for (let i = 0; i < 14; i++) {
+        zz.push(0);
+    }
+    let zzc = matrix_mult_vm(P, P, zz, cholcov_matrix);
+    console.log('TEST', zzc);
     if (v !== '\n') {
         dialog.push({ who: 'human', what: v});
     }

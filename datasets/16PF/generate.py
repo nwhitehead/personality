@@ -46,3 +46,6 @@ print(np.max(diff), np.mean(diff))
 with open('cholcov.json', 'wt') as fout:
     fout.write(json.dumps(c.T.tolist()))
 
+# Test [1,1,0,...]
+x = np.array([1, 1] + [0 for i in range(14)])
+print(x @ c.T)
