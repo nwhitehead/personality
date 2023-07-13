@@ -51,7 +51,7 @@ watch(() => { return props.userInputDisabled; }, (newValue) => {
 
 function isLast(index, dialog) {
     return {
-        'zoom-active': index == dialog.length - 1
+        'zoomactive': index == dialog.length - 1
     }
 }
 </script>
@@ -60,7 +60,7 @@ function isLast(index, dialog) {
 .zoom {
     @apply transition ease-in-out hover:-translate-x-14 hover:scale-[3.0];
 }
-.zoom-active {
+.zoomactive {
     @apply -translate-x-10 scale-[2.0];
 }
 </style>

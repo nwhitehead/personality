@@ -31,6 +31,9 @@ Use [Spacy](https://spacy.io/) for splitting sentences for chunking.
 We can do summarization with:
 [BART Large CNN Samsum](https://huggingface.co/philschmid/bart-large-cnn-samsum)
 
+Embedding can use Sentence Transformers, or Instruct.
+[InstructOR paper](https://arxiv.org/abs/2212.09741)
+
 
 ## Testers
 
@@ -73,6 +76,28 @@ Hobbies:
 
 OkCupid had good quizzes back in the day. Some are available for psychological research.
 [OkCupid Dataset paper](https://openpsych.net/paper/46/)
+
+## Fun
+
+One thing that might be fun is quiz questions for you and for the AI persona. The quiz question
+asks what they think they other person would answer. Basically a quiz to see how well you know
+the other person. The quiz questions for this game can also be used to generate the AI persona
+(e.g. generating answers to them is the thing generating the persona).
+
+Example questions:
+[BGR couple's quiz](https://www.mindbodygreen.com/articles/couples-quiz)
+
+[Women's Health Magazine quiz](https://www.womenshealthmag.com/sex-and-love/a32160810/couples-quiz-questions/)
+
+[Pyschology Today](https://www.psychologytoday.com/us/blog/in-practice/201607/21-questions-test-how-well-you-really-know-your-partner)
+
+Some issues:
+* How does scoring work? These types of questions aren't easy to say "yes" or "no" to an answer. Need to ask ChatGPT how good
+an answer it is with explanation maybe.
+* Need to make sure quiz answers are consistent. They overlap in many ways. Maybe start with factual family history, then personality,
+then preferences and thoughts about things. Build up with existing answers in context each time.
+
+
 
 ## Costs
 
