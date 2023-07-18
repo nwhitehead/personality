@@ -3,3 +3,4 @@ backend/target
 node_modules/
 dist/
 __pycache__
+rustserver/target
