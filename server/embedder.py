@@ -22,7 +22,6 @@ class Embedder:
     def embed(self, input_texts, prefix='', max_length=512):
         # Tokenize the input texts
         inputs = [prefix + text for text in input_texts]
-        print(inputs)
         batch_dict = self.tokenizer(inputs, max_length=max_length, padding=True, truncation=True, return_tensors='pt')
         # Run the model
         outputs = self.model(**batch_dict)

@@ -1,4 +1,8 @@
 import { python } from 'pythonia';
+import fs from 'fs';
+
+const txt = fs.readFileSync('./tests/test_result.md', { 'encoding': 'utf-8' });
+const txts = txt.split('\n\n');
 
 // Which model to use.
 // Default is intfloat/e5-base-v2 which is quite good.
@@ -24,15 +28,18 @@ async function embed(inputs, prefix) {
     return (await result.valueOf());
 }
 
-const input_passages = [
-    'Suzy sells seashells by the seashore',
-    'The number 6 is a perfect number. That means the sum of its prime factors including 1 is equal to the number.',
-    'This is a red herring. A herring is a type of fish, and the fact that it is red makes it surprising and novel.',
-];
+// const input_passages = [
+//     'Suzy sells seashells by the seashore',
+//     'The number 6 is a perfect number. That means the sum of its prime factors including 1 is equal to the number.',
+//     'This is a red herring. A herring is a type of fish, and the fact that it is red makes it surprising and novel.',
+// ];
+const input_passages = txts;
+
 const input_queries = [
-    'Who sells seashells?',
-    'Where does Suzy sell?',
+    'What is your eye color?',
+    'What is your favorite classic Hollywood flick?',
     'Is 8 a perfect number?',
+    'Do you like painting?',
 ];
 
 const passages_embeddings = await embed(input_passages, 'passage: ');

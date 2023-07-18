@@ -29,3 +29,27 @@ Do you have any tattoos?
 Are you more into salty or sweet snacks?
 What’s your guilty pleasure?
 What is your biggest fear?
+
+What kind of relationship do you have with your parents?
+What kind of relationship do you have with your siblings?
+Are you still in touch with any friends from childhood?
+Did you have a positive high school experience?
+Were your parents supportive of your dreams and goals?
+How was your college experience?
+Do you get excited about visiting home?
+How did your last relationship end?
+How many past relationships do you have?
+How many times have you been in love?
+How have those relationships impacted you?
+How do you feel about your exes today?
+Is there anything in your past relationship that has made you closed off?
+Do you feel you've been able to maintain positive romantic relationships?
+Do you still keep in touch with any exes?
+What are your biggest relationship fears?
+Have you gone through heartbreak before?
+Have you ever cheated on a partner?
+Have you ever been cheated on?
+Do you have any past experience with mental health issues?
+How do you feel about your middle school years?
+What is your favorite childhood memory?
+What was your dream job as a child?

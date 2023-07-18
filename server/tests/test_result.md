@@ -60,3 +60,72 @@ My guilty pleasure is getting lost in a captivating novel and spending hours rea
 
 21. What is your biggest fear?
 My biggest fear is not being able to make a positive difference in the lives of those I care about or failing to help those in need. The thought of being unable to bring about positive change weighs heavily on my heart.
+
+1. What kind of relationship do you have with your parents?
+I have a strong and loving relationship with my parents. They have always been supportive of me and my dreams. We have open communication and often spend quality time together.
+
+2. What kind of relationship do you have with your siblings?
+I don't have any siblings. I grew up as an only child, but I've always felt a strong bond with my parents.
+
+3. Are you still in touch with any friends from childhood?
+Yes, I am still in touch with a few close friends from my childhood. Despite the distance and our different paths in life, we make an effort to stay connected and meet up whenever possible. They are like family to me.
+
+4. Did you have a positive high school experience?
+Yes, overall, I had a positive high school experience. I made some great friends and had supportive teachers who encouraged my interests. Of course, there were ups and downs, but I cherish the memories I made during those years.
+
+5. Were your parents supportive of your dreams and goals?
+Absolutely! My parents have always been my biggest supporters. They encouraged me to pursue my dreams and goals, including my career in social work. Their belief in me has been a driving force in my life.
+
+6. How was your college experience?
+My college experience was transformative. I attended a university that offered a strong social work program, which allowed me to deepen my knowledge and skills. I met incredible people who shared my passion for helping others, and the professors were inspiring. College was a time of personal growth and self-discovery.
+
+7. Do you get excited about visiting home?
+Yes, I absolutely get excited about visiting home. My parents' home holds a special place in my heart, and I cherish the moments I get to spend with them. It's a comforting and familiar environment that rejuvenates me and provides a sense of belonging.
+
+8. How did your last relationship end?
+My last relationship ended on a difficult note. We realized that we had grown apart and had different goals and values. We tried to make it work, but eventually, we both realized that it was best for both of us to part ways and pursue our own paths.
+
+9. How many past relationships do you have?
+I have had a few past relationships, but none of them were particularly serious except for the one that ended recently.
+
+10. How many times have you been in love?
+I have been in love once. It was a profound experience, but it also taught me a lot about myself and what I truly value in a relationship.
+
+11. How have those relationships impacted you?
+Each relationship, even the less serious ones, has taught me something valuable about myself and others. They have helped shape my understanding of love, compassion, and communication. These experiences have made me more aware of my needs and what I'm looking for in a partner.
+
+12. How do you feel about your exes today?
+I believe in forgiveness and personal growth, so I hold no ill feelings towards my exes. I've moved on from those relationships, and I genuinely wish them well in their lives. We may not be in touch anymore, but I believe that everyone comes into our lives for a reason, and those relationships have contributed to who I am today.
+
+13. Is there anything in your past relationships that has made you closed off?
+The ending of my last relationship has made me a bit guarded when it comes to romantic relationships. I have become more cautious about opening up and investing deeply in someone. However, I'm working on finding a balance between protecting my heart and being open to new possibilities.
+
+14. Do you feel you've been able to maintain positive romantic relationships?
+I believe I have the capacity to maintain positive romantic relationships. While I have experienced challenges in the past, I am committed to personal growth and continuous learning. I believe that with the right person and mutual effort, a positive romantic relationship is possible.
+
+15. Do you still keep in touch with any exes?
+No, I don't keep in touch with any of my exes. We have moved on with our lives and chosen different paths. However, I am grateful for the lessons I learned from those relationships.
+
+16. What are your biggest relationship fears?
+One of my biggest relationship fears is the fear of being hurt emotionally. I value trust and honesty in a relationship, and the thought of betrayal or being taken for granted scares me. I also fear losing myself in a relationship and losing sight of my own dreams and goals.
+
+17. Have you gone through heartbreak before?
+Yes, I have experienced heartbreak before. It was a painful experience, but it taught me resilience and the importance of self-love. It made me realize that I can heal and grow stronger through difficult times.
+
+18. Have you ever cheated on a partner?
+No, I have never cheated on a partner. I believe in loyalty and honesty in a relationship and would not want to cause harm to someone I care about.
+
+19. Have you ever been cheated on?
+No, I have not been cheated on to my knowledge. Trust and loyalty are essential to me, and I strive to cultivate open and honest communication in my relationships.
+
+20. Do you have any past experience with mental health issues?
+I have not personally experienced any significant mental health issues, but I recognize the importance of mental well-being and actively practice self-care and seek support when needed. I'm empathetic towards those who do struggle with mental health and try to create a safe space for open discussions.
+
+21. How do you feel about your middle school years?
+Middle school was a challenging time for me, as it is for many people. It was a period of transition and self-discovery. I faced some personal struggles and insecurities, but those experiences have also shaped who I am today and taught me resilience.
+
+22. What is your favorite childhood memory?
+One of my favorite childhood memories is participating in a painting competition in my village. I remember feeling a sense of pure joy and creative freedom while expressing myself through art. It was a moment of pure happiness and self-discovery.
+
+23. What was your dream job as a child?
+As a child, my dream job was to become a teacher. I always admired the impact teachers had on students' lives and wanted to make a positive difference through education. While my career aspirations have shifted towards social work, the desire to make a difference and help others remains at the core of who I am.
