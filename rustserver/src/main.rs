@@ -11,6 +11,23 @@ fn calculate_hash<T: Hash>(t: &T) -> u64 {
     s.finish()
 }
 
+pub struct Embedder {
+    pyobj: Py<PyAny>
+}
+
+impl Embedder {
+    pub fn new() -> Self {
+        let py_embedder = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/embedder.py"));
+        Python::with_gil(|py| {
+            PyModule::from_code(py, py_embedder, "embedder", "embedder")?;
+            let embedder_module = py.import("embedder")?;
+            let embedder_class: Py<PyAny> = embedder_module.getattr("Embedder")?.into();
+            let embedder: Py<PyAny> = embedder_class.call1(py, ("intfloat/e5-base-v2", ))?.into();
+            Ok::<Embedder, PyErr>(Self { pyobj: embedder })
+        }).expect("Python did not return embedder")
+    }
+}
+
 fn main() -> PyResult<()> {
     let embedding_cache_filename = std::env::var("EMBEDDING_CACHE")
     .expect("EMBEDDING_CACHE must be set to writable filename location");
