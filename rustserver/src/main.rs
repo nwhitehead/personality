@@ -1,7 +1,10 @@
 use pyo3::prelude::*;
 use std::vec::Vec;
+use pickledb::{PickleDb, PickleDbDumpPolicy, SerializationMethod};
+use serde::{Deserialize, Serialize};
 
 fn main() -> PyResult<()> {
+    let mut db = PickleDb::new("test.db", PickleDbDumpPolicy::AutoDump, SerializationMethod::Json);
     let py_embedder = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/embedder.py"));
     Python::with_gil(|py| {
         PyModule::from_code(py, py_embedder, "embedder", "embedder")?;

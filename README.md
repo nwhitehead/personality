@@ -34,6 +34,26 @@ We can do summarization with:
 Embedding can use Sentence Transformers, or Instruct.
 [InstructOR paper](https://arxiv.org/abs/2212.09741)
 
+New idea for embeddings is to use `intfloat/e5-base-v2`.
+[E5 Paper](https://arxiv.org/pdf/2212.03533.pdf).
+This one is nice because you don't need to prompt like the Instruct one, just `passage: ` and `query: ` is good enough
+prefixes. And results are great. I like the `base` model for nice performance, reasonable memory usage with CPU only,
+and good results.
+
+For vector search for embeddings, don't need anything fancy. Just linear search of dot products, send the best matches.
+If we have 10k snippets (LONG convo case), that is still just `(10k x 768) * (768 x 1)`. Perfectly parallelizable, dense,
+Easily fits into memory, 10k times 768 floats is 3 MB. Can retrieve matrix of all chunk vectors for conversation from DB
+in 1 step, in memory compute matches, return best ones for rolling chat.
+
+## API
+
+Basic design is main interaction is by Vue JS app served on webpage. Async calls hook up to the backend API functions.
+Some things API does:
+* Login/logout/account creation
+* Create new persona
+* Get list of available personas
+* Get list of all conversation turns for user and persona (or maybe last N entries)
+* Generate response for user interaction
 
 ## Testers
 
