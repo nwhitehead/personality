@@ -58,7 +58,7 @@ fn main() -> () {
     let emb = Embedder::new();
     let res = emb.embed(data.clone(), TextType::Query);
     for i in 1..res.len() {
-        let h = pfcache::calculate_hash(&data[i]);
-        println!("result {}: {} => {:#x} {:.3} {:.3} ... {:.3}", i, &data[i], h, res[i][0], res[i][1], res[i][767]);
+//        let h = pfcache::calculate_hash(&data[i]);
+        println!("result {}: {} => {:.3} {:.3} ... {:.3}", i, &data[i], res[i][0], res[i][1], res[i][767]);
     }
 }
