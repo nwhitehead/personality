@@ -11,6 +11,18 @@ fn calculate_hash<T: Hash>(t: &T) -> u64 {
     s.finish()
 }
 
+#[derive(PartialEq)]
+pub enum TextType {
+    Passage,
+    Query,
+}
+
+fn text_of_texttype(t:TextType) -> &str {
+    match t {
+        
+    }
+}
+
 pub struct Embedder {
     pyobj: Py<PyAny>
 }
@@ -26,9 +38,20 @@ impl Embedder {
             Ok::<Embedder, PyErr>(Self { pyobj: embedder })
         }).expect("Python did not return embedder")
     }
+    pub fn embed(&self, texts:Vec<&str>, textType:TextType) -> Vec<Vec<f32>> {
+        Python::with_gil(|py| {
+            Ok::<Vec<Vec<f32>>, PyErr>(self.pyobj
+                .call_method1(py, "embed", (texts.clone(), if textType == TextType::Query { "query: " } else { "passage: " }))?
+                .call_method0(py, "cpu")?
+                .call_method0(py, "detach")?
+                .call_method0(py, "numpy")?
+                .call_method0(py, "tolist")?
+                .extract(py)?)
+        }).expect("Python did not return embedding")
+    }
 }
 
-fn main() -> PyResult<()> {
+fn main() -> () {
     let embedding_cache_filename = std::env::var("EMBEDDING_CACHE")
     .expect("EMBEDDING_CACHE must be set to writable filename location");
     let mut db = PickleDb::new(embedding_cache_filename, PickleDbDumpPolicy::DumpUponRequest, SerializationMethod::Json);
@@ -39,23 +62,10 @@ fn main() -> PyResult<()> {
         "Is 8 a perfect number?",
         "Do you like painting?",
     ];
-    Python::with_gil(|py| {
-        PyModule::from_code(py, py_embedder, "embedder", "embedder")?;
-        let embedder_module = py.import("embedder")?;
-        let embedder_class: Py<PyAny> = embedder_module.getattr("Embedder")?.into();
-        let embedder: Py<PyAny> = embedder_class.call1(py, ("intfloat/e5-base-v2", ))?.into();
-
-        let res = embedder
-            .call_method1(py, "embed", (data.clone(), "query: "))?
-            .call_method0(py, "cpu")?
-            .call_method0(py, "detach")?
-            .call_method0(py, "numpy")?
-            .call_method0(py, "tolist")?;
-        let res2: Vec<Vec<f64>> = res.extract(py)?;
-        for i in 1..res2.len() {
-            let h = calculate_hash(&data[i]);
-            println!("result {}: {} => {:#x} {:.3} {:.3} ... {:.3}", i, &data[i], h, res2[i][0], res2[i][1], res2[i][767]);
-        }
-        Ok(())
-    })
+    let emb = Embedder::new();
+    let res = emb.embed(data.clone(), TextType::Query);
+    for i in 1..res.len() {
+        let h = calculate_hash(&data[i]);
+        println!("result {}: {} => {:#x} {:.3} {:.3} ... {:.3}", i, &data[i], h, res[i][0], res[i][1], res[i][767]);
+    }
 }
