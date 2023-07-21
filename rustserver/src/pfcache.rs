@@ -24,7 +24,7 @@ pub enum Error {
     PickleDB
 }
 
-impl Cache where
+impl Cache
 {
     pub fn new() -> Self {
         let embedding_cache_filename = std::env::var("EMBEDDING_CACHE")
@@ -37,7 +37,7 @@ impl Cache where
     pub fn dump(&mut self) -> Result<(), Error> {
         Ok(())
     }
-    pub fn get<K, V> (&mut self, key: K, f: &dyn Fn(K) -> V) -> V 
+    pub fn get<K, V> (&mut self, key: K, f: &dyn Fn(&K) -> V) -> V 
     where
         K: Hash,
         V: DeserializeOwned,
@@ -48,7 +48,7 @@ impl Cache where
         match existing {
             Some(value) => serde_json::from_str(&value).unwrap(),
             None => {
-                let value = f(key);
+                let value = f(&key);
                 let svalue = serde_json::to_string(&value).unwrap();
                 self.map.insert(h, svalue.clone());
                 value
