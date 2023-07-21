@@ -1,21 +1,17 @@
 /// pfcache "Persistent Functional Cache"
+// A pfcache is file backed, everything is serialized to the file when dumped
 
 use std::collections::HashMap;
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
 use serde::{Serialize, Deserialize};
+use serde::de::DeserializeOwned;
+use serde_json;
 
-//#[derive(Serialize, Deserialize)]
-pub struct PHash {
-    hash: u64,
-}
-
-impl PHash {
-    pub fn new<T: Hash>(t: &T) -> Self {
-        let mut s = DefaultHasher::new();
-        t.hash(&mut s);
-        Self { hash: s.finish() }
-    }
+pub fn compute_hash<T: Hash>(t: &T) -> u64 {
+    let mut s = DefaultHasher::new();
+    t.hash(&mut s);
+    s.finish()
 }
 
 pub struct Cache {
@@ -28,7 +24,8 @@ pub enum Error {
     PickleDB
 }
 
-impl Cache {
+impl Cache where
+{
     pub fn new() -> Self {
         let embedding_cache_filename = std::env::var("EMBEDDING_CACHE")
             .unwrap_or("embedding_cache.db".to_string());
@@ -40,7 +37,22 @@ impl Cache {
     pub fn dump(&mut self) -> Result<(), Error> {
         Ok(())
     }
-    pub fn get<'a, K: Hash, V: Serialize>(key: &K, f: &dyn Fn(&K) -> &'a V) -> &'a V {
-        f(key)
+    pub fn get<K, V> (&mut self, key: K, f: &dyn Fn(K) -> V) -> V 
+    where
+        K: Hash,
+        V: DeserializeOwned,
+        V: Serialize,
+    {
+        let h = compute_hash(&key);
+        let existing = self.map.get(&h);
+        match existing {
+            Some(value) => serde_json::from_str(&value).unwrap(),
+            None => {
+                let value = f(key);
+                let svalue = serde_json::to_string(&value).unwrap();
+                self.map.insert(h, svalue.clone());
+                value
+            }
+        }
     }
 }

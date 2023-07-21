@@ -190,6 +190,7 @@ dependencies = [
  "pickledb",
  "pyo3",
  "serde",
+ "serde_json",
 ]
 
 [[package]]
