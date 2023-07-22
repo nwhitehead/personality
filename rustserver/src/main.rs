@@ -48,7 +48,7 @@ impl Embedder {
 }
 
 fn main() -> () {
-    let db = pfcache::Cache::new();
+    let mut db = pfcache::Cache::new();
     let data = vec![
         "What is your eye color?",
         "What is your favorite classic Hollywood flick?",
@@ -57,8 +57,15 @@ fn main() -> () {
     ];
     let emb = Embedder::new();
     let res = emb.embed(data.clone(), TextType::Query);
+    let f = |x:&String| -> Vec<f32> {
+        let res = emb.embed(vec![&x], TextType::Query);
+        res[0].clone()
+    };
+    let x = "What is your eye color?".to_string();
+    let y = f(&x);
+    println!("y={:?}", y);
+    db.set(&x, y);
     for i in 1..res.len() {
-//        let h = pfcache::calculate_hash(&data[i]);
         println!("result {}: {} => {:.3} {:.3} ... {:.3}", i, &data[i], res[i][0], res[i][1], res[i][767]);
     }
 }

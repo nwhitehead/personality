@@ -20,8 +20,16 @@ pub struct Cache {
 }
 
 /// This is all the possible errors that can happen with pfcaching
+#[derive(Debug)]
 pub enum Error {
-    PickleDB
+    NotFound,
+    Serialize(serde_json::Error),
+}
+
+impl From<serde_json::Error> for Error {
+    fn from(err: serde_json::Error) -> Self {
+        Error::Serialize(err)
+    }
 }
 
 impl Cache
@@ -37,22 +45,29 @@ impl Cache
     pub fn dump(&mut self) -> Result<(), Error> {
         Ok(())
     }
-    pub fn get<K, V> (&mut self, key: K, f: &dyn Fn(&K) -> V) -> V 
+    pub fn has<K: Hash> (&self, key: K) -> bool {
+        let h = compute_hash(&key);
+        self.map.get(&h).is_some()
+    }
+    pub fn get<K, V> (&self, key: K) -> Result<V, Error>
     where
         K: Hash,
         V: DeserializeOwned,
+    {
+        let h = compute_hash(&key);
+        match self.map.get(&h) {
+            Some(value) => Ok(serde_json::from_str(&value)?),
+            _ => Err(Error::NotFound)
+        }
+    }
+    pub fn set<K, V> (&mut self, key: K, value: V) -> Result<(), Error>
+    where
+        K: Hash,
         V: Serialize,
     {
         let h = compute_hash(&key);
-        let existing = self.map.get(&h);
-        match existing {
-            Some(value) => serde_json::from_str(&value).unwrap(),
-            None => {
-                let value = f(&key);
-                let svalue = serde_json::to_string(&value).unwrap();
-                self.map.insert(h, svalue.clone());
-                value
-            }
-        }
+        let vs = serde_json::to_string(&value)?;
+        self.map.insert(h, vs);
+        Ok(())
     }
 }
