@@ -4,9 +4,11 @@
 use std::collections::HashMap;
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
+use std::marker::PhantomData;
 use serde::{Serialize, Deserialize};
 use serde::de::DeserializeOwned;
-use serde_json;
+use std::io;
+use std::fs::File;
 
 pub fn compute_hash<T: Hash>(t: &T) -> u64 {
     let mut s = DefaultHasher::new();
@@ -14,9 +16,11 @@ pub fn compute_hash<T: Hash>(t: &T) -> u64 {
     s.finish()
 }
 
-pub struct Cache {
+pub struct Cache<K, V>
+{
     filename: String,
     map: HashMap<u64, String>,
+    _marker: std::marker::PhantomData<(K, V)>,
 }
 
 /// This is all the possible errors that can happen with pfcaching
@@ -32,7 +36,10 @@ impl From<serde_json::Error> for Error {
     }
 }
 
-impl Cache
+impl <K, V> Cache<K, V> where
+    K: Hash,
+    V: Serialize,
+    V: DeserializeOwned,
 {
     pub fn new() -> Self {
         let embedding_cache_filename = std::env::var("EMBEDDING_CACHE")
@@ -40,19 +47,18 @@ impl Cache
         Self {
             filename: embedding_cache_filename,
             map: HashMap::new(),
+            _marker: PhantomData,
         }
     }
     pub fn dump(&mut self) -> Result<(), Error> {
+
         Ok(())
     }
-    pub fn has<K: Hash> (&self, key: K) -> bool {
+    pub fn has(&self, key: K) -> bool {
         let h = compute_hash(&key);
         self.map.get(&h).is_some()
     }
-    pub fn get<K, V> (&self, key: K) -> Result<V, Error>
-    where
-        K: Hash,
-        V: DeserializeOwned,
+    pub fn get(&self, key: K) -> Result<V, Error>
     {
         let h = compute_hash(&key);
         match self.map.get(&h) {
@@ -60,10 +66,7 @@ impl Cache
             _ => Err(Error::NotFound)
         }
     }
-    pub fn set<K, V> (&mut self, key: K, value: V) -> Result<(), Error>
-    where
-        K: Hash,
-        V: Serialize,
+    pub fn set(&mut self, key: K, value: V) -> Result<(), Error>
     {
         let h = compute_hash(&key);
         let vs = serde_json::to_string(&value)?;

@@ -63,8 +63,8 @@ fn main() -> () {
     };
     let x = "What is your eye color?".to_string();
     let y = f(&x);
-    println!("y={:?}", y);
-    db.set(&x, y);
+    db.set(&x, y).expect("Could not set db");
+    let z = db.get(&x).expect("Could not get from db");
     for i in 1..res.len() {
         println!("result {}: {} => {:.3} {:.3} ... {:.3}", i, &data[i], res[i][0], res[i][1], res[i][767]);
     }
