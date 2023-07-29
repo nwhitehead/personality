@@ -28,11 +28,18 @@ pub struct Cache<K, V>
 pub enum Error {
     NotFound,
     Serialize(serde_json::Error),
+    IOError(std::io::Error),
 }
 
 impl From<serde_json::Error> for Error {
     fn from(err: serde_json::Error) -> Self {
         Error::Serialize(err)
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Self {
+        Error::IOError(err)
     }
 }
 
@@ -51,7 +58,7 @@ impl <K, V> Cache<K, V> where
         }
     }
     pub fn dump(&mut self) -> Result<(), Error> {
-
+        let mut file = File::open(&self.filename)?;
         Ok(())
     }
     pub fn has(&self, key: K) -> bool {
