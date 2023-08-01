@@ -1,8 +1,5 @@
 use pyo3::prelude::*;
 use std::vec::Vec;
-use serde::{Deserialize, Serialize};
-use std::collections::hash_map::DefaultHasher;
-use std::hash::{Hash, Hasher};
 
 mod pfcache;
 
@@ -49,6 +46,7 @@ impl Embedder {
 
 fn main() -> () {
     let mut db = pfcache::Cache::new();
+    db.load();
     let data = vec![
         "What is your eye color?",
         "What is your favorite classic Hollywood flick?",

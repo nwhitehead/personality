@@ -4,10 +4,11 @@
 use std::collections::HashMap;
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
-use serde::{Serialize, Deserialize};
+use serde::Serialize;
 use serde::de::DeserializeOwned;
-use std::io::Write;
+use std::io::{Read, Write};
 use std::fs::File;
+use std::marker::PhantomData;
 
 pub fn compute_hash<T: Hash>(t: &T) -> u64 {
     let mut s = DefaultHasher::new();
@@ -19,7 +20,7 @@ pub struct Cache<K, V>
 {
     filename: String,
     map: HashMap<u64, Vec<u8>>,
-    _marker: std::marker::PhantomData<(K, V)>,
+    _marker: PhantomData<(K, V)>,
 }
 
 /// This is all the possible errors that can happen with pfcaching
@@ -53,13 +54,20 @@ impl <K, V> Cache<K, V> where
         Self {
             filename: embedding_cache_filename,
             map: HashMap::new(),
-            _marker: std::marker::PhantomData,
+            _marker: PhantomData,
         }
     }
     pub fn dump(&mut self) -> Result<(), Error> {
         let mut file = File::create(&self.filename)?;
         let vec = postcard::to_stdvec(&self.map)?;
         file.write_all(&vec)?;
+        Ok(())
+    }
+    pub fn load(&mut self) -> Result<(), Error> {
+        let mut file = File::open(&self.filename)?;
+        let mut data = Vec::new();
+        file.read_to_end(&mut data)?;
+        self.map = postcard::from_bytes(&data)?;
         Ok(())
     }
     pub fn has(&self, key: K) -> bool {
