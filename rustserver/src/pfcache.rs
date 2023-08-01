@@ -16,7 +16,10 @@ pub fn compute_hash<T: Hash>(t: &T) -> u64 {
     s.finish()
 }
 
-pub struct Cache<K, V>
+pub struct Cache<K, V> where
+    K: Hash,
+    V: Serialize,
+    V: DeserializeOwned,
 {
     filename: String,
     map: HashMap<u64, Vec<u8>>,
@@ -48,13 +51,24 @@ impl <K, V> Cache<K, V> where
     V: Serialize,
     V: DeserializeOwned,
 {
-    pub fn new() -> Self {
+    pub fn new() -> Result<Self, Error> {
         let embedding_cache_filename = std::env::var("EMBEDDING_CACHE")
             .unwrap_or("embedding_cache.db".to_string());
-        Self {
-            filename: embedding_cache_filename,
-            map: HashMap::new(),
-            _marker: PhantomData,
+        match File::open(&embedding_cache_filename) {
+            Err(_) => Ok(Self {
+                filename: embedding_cache_filename,
+                map: HashMap::new(),
+                _marker: PhantomData,
+            }),
+            Ok(mut file) => {
+                let mut data = Vec::new();
+                file.read_to_end(&mut data)?;
+                Ok(Self {
+                    filename: embedding_cache_filename,
+                    map: postcard::from_bytes(&data)?,
+                    _marker: PhantomData,
+                })        
+            }
         }
     }
     pub fn dump(&mut self) -> Result<(), Error> {
@@ -70,11 +84,11 @@ impl <K, V> Cache<K, V> where
         self.map = postcard::from_bytes(&data)?;
         Ok(())
     }
-    pub fn has(&self, key: K) -> bool {
+    pub fn has(&self, key: &K) -> bool {
         let h = compute_hash(&key);
         self.map.get(&h).is_some()
     }
-    pub fn get(&self, key: K) -> Result<V, Error>
+    pub fn get(&self, key: &K) -> Result<V, Error>
     {
         let h = compute_hash(&key);
         match self.map.get(&h) {
@@ -82,11 +96,22 @@ impl <K, V> Cache<K, V> where
             _ => Err(Error::NotFound)
         }
     }
-    pub fn set(&mut self, key: K, value: V) -> Result<(), Error>
+    pub fn set(&mut self, key: &K, value: &V) -> Result<(), Error>
     {
         let h = compute_hash(&key);
         let vs = postcard::to_stdvec(&value)?;
         self.map.insert(h, vs);
         Ok(())
+    }
+}
+
+impl <K, V> Drop for Cache<K, V> where
+    K: Hash,
+    V: Serialize,
+    V: DeserializeOwned,
+{
+    fn drop(&mut self) {
+        // Make sure we serialize the cache on exit
+        self.dump().unwrap();
     }
 }

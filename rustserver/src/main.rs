@@ -45,8 +45,7 @@ impl Embedder {
 }
 
 fn main() -> () {
-    let mut db = pfcache::Cache::new();
-    db.load();
+    let mut db = pfcache::Cache::new().unwrap();
     let data = vec![
         "What is your eye color?",
         "What is your favorite classic Hollywood flick?",
@@ -61,8 +60,10 @@ fn main() -> () {
     };
     let x = "What is your eye color?".to_string();
     let y = f(&x);
-    db.set(&x, y).expect("Could not set db");
+    db.set(&x, &y).expect("Could not set db");
     let z = db.get(&x).expect("Could not get from db");
+    let dby = db.get(&x).expect("Could not get from db");
+    assert!(z == dby);
     for i in 1..res.len() {
         println!("result {}: {} => {:.3} {:.3} ... {:.3}", i, &data[i], res[i][0], res[i][1], res[i][767]);
     }
