@@ -9,6 +9,7 @@ use serde::{Serialize, Deserialize};
 use serde::de::DeserializeOwned;
 use std::io::Write;
 use std::fs::File;
+use postcard::{from_bytes, to_stdvec};
 
 pub fn compute_hash<T: Hash>(t: &T) -> u64 {
     let mut s = DefaultHasher::new();
@@ -28,12 +29,19 @@ pub struct Cache<K, V>
 pub enum Error {
     NotFound,
     Serialize(serde_json::Error),
+    PostcardSerialize(postcard::Error),
     IOError(std::io::Error),
 }
 
 impl From<serde_json::Error> for Error {
     fn from(err: serde_json::Error) -> Self {
         Error::Serialize(err)
+    }
+}
+
+impl From<postcard::Error> for Error {
+    fn from(err: postcard::Error) -> Self {
+        Error::PostcardSerialize(err)
     }
 }
 
@@ -59,9 +67,8 @@ impl <K, V> Cache<K, V> where
     }
     pub fn dump(&mut self) -> Result<(), Error> {
         let mut file = File::create(&self.filename)?;
-        let json = serde_json::to_string(&self.map)?;
-        let data = json.as_bytes();
-        file.write_all(data)?;
+        let vec = postcard::to_stdvec(&self.map)?;
+        file.write_all(&vec)?;
         Ok(())
     }
     pub fn has(&self, key: K) -> bool {
