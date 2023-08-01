@@ -4,12 +4,10 @@
 use std::collections::HashMap;
 use std::collections::hash_map::DefaultHasher;
 use std::hash::{Hash, Hasher};
-use std::marker::PhantomData;
 use serde::{Serialize, Deserialize};
 use serde::de::DeserializeOwned;
 use std::io::Write;
 use std::fs::File;
-use postcard::{from_bytes, to_stdvec};
 
 pub fn compute_hash<T: Hash>(t: &T) -> u64 {
     let mut s = DefaultHasher::new();
@@ -20,7 +18,7 @@ pub fn compute_hash<T: Hash>(t: &T) -> u64 {
 pub struct Cache<K, V>
 {
     filename: String,
-    map: HashMap<u64, String>,
+    map: HashMap<u64, Vec<u8>>,
     _marker: std::marker::PhantomData<(K, V)>,
 }
 
@@ -28,20 +26,13 @@ pub struct Cache<K, V>
 #[derive(Debug)]
 pub enum Error {
     NotFound,
-    Serialize(serde_json::Error),
-    PostcardSerialize(postcard::Error),
+    Serialize(postcard::Error),
     IOError(std::io::Error),
-}
-
-impl From<serde_json::Error> for Error {
-    fn from(err: serde_json::Error) -> Self {
-        Error::Serialize(err)
-    }
 }
 
 impl From<postcard::Error> for Error {
     fn from(err: postcard::Error) -> Self {
-        Error::PostcardSerialize(err)
+        Error::Serialize(err)
     }
 }
 
@@ -62,7 +53,7 @@ impl <K, V> Cache<K, V> where
         Self {
             filename: embedding_cache_filename,
             map: HashMap::new(),
-            _marker: PhantomData,
+            _marker: std::marker::PhantomData,
         }
     }
     pub fn dump(&mut self) -> Result<(), Error> {
@@ -79,14 +70,14 @@ impl <K, V> Cache<K, V> where
     {
         let h = compute_hash(&key);
         match self.map.get(&h) {
-            Some(value) => Ok(serde_json::from_str(&value)?),
+            Some(value) => Ok(postcard::from_bytes(&value)?),
             _ => Err(Error::NotFound)
         }
     }
     pub fn set(&mut self, key: K, value: V) -> Result<(), Error>
     {
         let h = compute_hash(&key);
-        let vs = serde_json::to_string(&value)?;
+        let vs = postcard::to_stdvec(&value)?;
         self.map.insert(h, vs);
         Ok(())
     }
