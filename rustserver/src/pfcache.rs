@@ -7,7 +7,7 @@ use std::hash::{Hash, Hasher};
 use std::marker::PhantomData;
 use serde::{Serialize, Deserialize};
 use serde::de::DeserializeOwned;
-use std::io;
+use std::io::Write;
 use std::fs::File;
 
 pub fn compute_hash<T: Hash>(t: &T) -> u64 {
@@ -58,7 +58,10 @@ impl <K, V> Cache<K, V> where
         }
     }
     pub fn dump(&mut self) -> Result<(), Error> {
-        let mut file = File::open(&self.filename)?;
+        let mut file = File::create(&self.filename)?;
+        let json = serde_json::to_string(&self.map)?;
+        let data = json.as_bytes();
+        file.write_all(data)?;
         Ok(())
     }
     pub fn has(&self, key: K) -> bool {

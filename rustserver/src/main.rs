@@ -68,4 +68,5 @@ fn main() -> () {
     for i in 1..res.len() {
         println!("result {}: {} => {:.3} {:.3} ... {:.3}", i, &data[i], res[i][0], res[i][1], res[i][767]);
     }
+    db.dump();
 }
