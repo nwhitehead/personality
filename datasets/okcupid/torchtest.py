@@ -36,12 +36,14 @@ class CustomDataset(torch.utils.data.Dataset):
         self.x = torch.flatten(torch.nn.functional.one_hot(self.x), 1) * 1.0
         # Now fill in sample choices
         self.sample_choices = torch.randint(N, (1, samples))
-        self.question_choices = torch.randint(C, (1, samples))
+        self.question_choices = torch.randint(Q, (1, samples))
 
     def __len__(self):
         return self.samples
     
     def __getitem__(self, idx):
+        # To get one sample, copy input and output
+        # Then delete the chosen output, create mask for that part
         C = self.C
         Q = self.Q
         x = self.x
@@ -58,18 +60,6 @@ class CustomDataset(torch.utils.data.Dataset):
 data = CustomDataset(10, 3, 4, 0.5, 20)
 for i in data:
     print(i)
-
-# Let's try deleting one answer, train to get answer back
-def samples():
-    for index in range(SAMPLES):
-        n = random.randint(0, N - 1)
-        q = random.randint(0, Q - 1)
-        i = x[n].clone()
-        o = x[n].clone()
-        mask = torch.tensor([0] * (Q * C))
-        i[q * C : q * C + C] = 0
-        mask[q * C : q * C + C] = 1
-        yield (i, mask, o)
 
 # Loss function that is only computed over nonzero mask area
 mseloss = torch.nn.MSELoss()
