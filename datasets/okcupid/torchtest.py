@@ -58,8 +58,14 @@ class CustomDataset(torch.utils.data.Dataset):
 
 # Generate some random data
 data = CustomDataset(10, 3, 4, 0.5, 20)
-for i in data:
-    print(i)
+
+train_loader = torch.utils.data.DataLoader(data, batch_size=64, shuffle=True)
+
+# Try grabbing some data from the loader
+train_features, train_labels, train_masks = next(iter(train_loader))
+print(train_features)
+print(train_labels)
+print(train_masks)
 
 # Loss function that is only computed over nonzero mask area
 mseloss = torch.nn.MSELoss()
