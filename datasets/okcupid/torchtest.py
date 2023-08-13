@@ -57,21 +57,80 @@ class CustomDataset(torch.utils.data.Dataset):
         return i, o, mask
 
 # Generate some random data
-data = CustomDataset(10, 3, 4, 0.5, 20)
+data = CustomDataset(10000, 10, 4, 0.3, 10000)
 
-train_loader = torch.utils.data.DataLoader(data, batch_size=64, shuffle=True)
+train_dataloader = torch.utils.data.DataLoader(data, batch_size=4, shuffle=True)
+test_dataloader = torch.utils.data.DataLoader(data, batch_size=4, shuffle=True)
 
-# Try grabbing some data from the loader
-train_features, train_labels, train_masks = next(iter(train_loader))
-print(train_features)
-print(train_labels)
-print(train_masks)
+# Define model
+import torch.nn as nn
+class NeuralNetwork(nn.Module):
+    def __init__(self, Q, C, SZ):
+        super().__init__()
+        self.Q = Q
+        self.C = C
+        self.SZ = SZ
+        self.ops = nn.Sequential(
+            nn.Linear(Q * C, SZ),
+            nn.ReLU(),
+            nn.Linear(SZ, SZ),
+            nn.ReLU(),
+            nn.Linear(SZ, Q * C)
+        )
+
+    def forward(self, x):
+        return self.ops(x)
+
+model = NeuralNetwork(10, 4, 40).to(device)
 
 # Loss function that is only computed over nonzero mask area
 mseloss = torch.nn.MSELoss()
-def criterion(predicted, target, mask):
-    print(target * mask, predicted * mask)
+def loss_fn(predicted, target, mask):
     return mseloss(predicted * mask, target * mask)
 
-# for (i, mask, o) in samples():
-#     print((i, mask, o, criterion(i, o, mask)))
+optimizer = torch.optim.AdamW(model.parameters())
+
+def train(dataloader, model, loss_fn, optimizer):
+    size = len(dataloader.dataset)
+    model.train()
+    for batch, (X, y, m) in enumerate(dataloader):
+        X, y, m = X.to(device), y.to(device), m.to(device)
+
+        # Compute prediction error
+        pred = model(X)
+        loss = loss_fn(pred, y, m)
+
+        # Backpropagation
+        loss.backward()
+        optimizer.step()
+        optimizer.zero_grad()
+
+        if batch % 100 == 0:
+            loss, current = loss.item(), (batch + 1) * len(X)
+            print(f"loss: {loss:>7f}  [{current:>5d}/{size:>5d}]")
+
+def test(dataloader, model, loss_fn):
+    size = len(dataloader.dataset)
+    num_batches = len(dataloader)
+    model.eval()
+    test_loss, correct = 0, 0
+    with torch.no_grad():
+        for X, y, m in dataloader:
+            X, y, m = X.to(device), y.to(device), m.to(device)
+            pred = model(X)
+            test_loss += loss_fn(pred, y, m).item()
+            guess = (pred * m).argmax(1)
+            right = (y * m).argmax(1)
+            correct += (guess == right).type(torch.float).sum().item()
+    test_loss /= num_batches
+    correct /= size
+    print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
+
+
+## Let's do this
+epochs = 50
+for t in range(epochs):
+    print(f"Epoch {t+1}\n-------------------------------")
+    train(train_dataloader, model, loss_fn, optimizer)
+    test(test_dataloader, model, loss_fn)
+print("Done!")
