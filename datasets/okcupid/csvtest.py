@@ -1,11 +1,13 @@
 import csv
+import numpy as np
+
 with open('./parsed_data_public_t.csv') as csvfile:
     reader = csv.reader(csvfile)
     # Skip header
     next(reader)
     # Remember answer set sizes
     anssize = []
-    dataset = []
+    dataset = np.array([[]])
     # Look at all questions
     for row in reader:
         # Extract the set of possible answers
@@ -19,9 +21,9 @@ with open('./parsed_data_public_t.csv') as csvfile:
         d = {}
         for ind, a in enumerate(ans):
             d[a] = ind
-        answers = [d[x] for x in row[1:]]
-        dataset.append(answers)
-        print(len(dataset))
+        answers = np.array([d[x] for x in row[1:]])
+        dataset = np.append(dataset, answers)
+        print(dataset.shape)
     print(anssize)
     print(len(anssize))
     print(sum(anssize))
