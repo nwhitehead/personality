@@ -24,4 +24,4 @@ with open('okcupid.npz', 'rb') as fin:
         res[:, pos : pos + C] = q0
     # Now save it
     with open('okcupid_onehot.npz', 'wb') as fout:
-        np.savez_compressed(fout, onehot=res, anssize=anssize)
+        np.savez_compressed(fout, onehot=res, anssize=anssize, dataset=dataset)
