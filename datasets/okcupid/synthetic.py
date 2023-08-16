@@ -23,16 +23,19 @@ class CustomDataset(torch.utils.data.Dataset):
             data = np.load(fin)
             self.onehot = data['onehot']
             self.anssize = data['anssize']
+            self.dataset = data['dataset']
             self.N = self.onehot.shape[0]
             self.Q = self.anssize.shape[0]
             assert sum(self.anssize) == self.onehot.shape[1]
+            self.nonzerosizes = np.count_nonzero(self.dataset, axis=1)
+
     def __len__(self):
         # There is one example per response per question
-        return self.N * self.Q
+        return sum(self.nonzerosizes)
     
     def __getitem__(self, idx):
         index, offset = split_index(idx, self.anssize)
-        print(idx, index, offset)
+        print(idx, index, offset, len(self))
         # # To get one sample, copy input and output
         # # Then delete the chosen output, create mask for that part
         # C = self.C
