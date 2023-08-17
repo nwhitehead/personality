@@ -34,15 +34,13 @@ class CustomDataset(torch.utils.data.Dataset):
         return sum(self.nonzerosizes)
     
     def __getitem__(self, idx):
-        index, offset = split_index(idx, self.anssize)
-        print(idx, index, offset, len(self))
+        n, q = split_index(idx, self.nonzerosizes)
+        print(f'{idx} / {len(self)} = {n} : {q}')
         # # To get one sample, copy input and output
         # # Then delete the chosen output, create mask for that part
         # C = self.C
         # Q = self.Q
         # x = self.x
-        # n = self.sample_choices[0][idx]
-        # q = self.question_choices[0][idx]
         # i = x[n].clone()
         # o = x[n].clone()
         # mask = torch.tensor([0] * (Q * C))
