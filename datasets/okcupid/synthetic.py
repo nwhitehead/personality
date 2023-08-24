@@ -105,7 +105,7 @@ class NeuralNetwork(nn.Module):
     def forward(self, x):
         return self.ops(x)
 
-model = NeuralNetwork(4073, 100).to(device)
+model = NeuralNetwork(4073, 1024).to(device)
 
 # Loss function that is only computed over nonzero mask area
 mseloss = torch.nn.MSELoss()
