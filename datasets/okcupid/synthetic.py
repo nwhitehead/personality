@@ -82,10 +82,10 @@ class CustomDataset(torch.utils.data.Dataset):
 
 dataset = CustomDataset()
 
-train_dataset, test_dataset, _ = torch.utils.data.random_split(dataset, [0.01, 0.001, 0.989])
-train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=16, shuffle=True)
-test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=16, shuffle=True)
-
+BS = 16
+train_dataset, test_dataset, _unused_data = torch.utils.data.random_split(dataset, [0.0001, 0.00001, 0.99989])
+train_dataloader = torch.utils.data.DataLoader(train_dataset, batch_size=BS, shuffle=True)
+test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=BS, shuffle=True)
 
 # Define model
 import torch.nn as nn
@@ -115,7 +115,7 @@ def loss_fn(predicted, target, mask):
 optimizer = torch.optim.AdamW(model.parameters())
 
 def train(dataloader, model, loss_fn, optimizer):
-    size = len(dataloader)
+    size = len(dataloader) * BS
     model.train()
     for batch, (X, y, m) in enumerate(dataloader):
         X, y, m = X.to(device), y.to(device), m.to(device)
@@ -135,7 +135,7 @@ def train(dataloader, model, loss_fn, optimizer):
 
 
 def test(dataloader, model, loss_fn):
-    size = len(dataloader)
+    size = len(dataloader) * BS
     num_batches = len(dataloader)
     model.eval()
     test_loss, correct = 0, 0
@@ -153,7 +153,7 @@ def test(dataloader, model, loss_fn):
 
 
 ## Let's do this
-epochs = 50
+epochs = 5
 for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
     train(train_dataloader, model, loss_fn, optimizer)
