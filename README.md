@@ -1,3 +1,7 @@
+# DEPRECATED
+
+New repo is shimmer one.
+
 # AI Personality
 
 A service for creating AI personalities.
